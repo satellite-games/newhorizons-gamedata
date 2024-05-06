@@ -1,4 +1,4 @@
-import { Blueprint, GameObject } from '../../base/game-object';
+import { GameObject } from 'lib/base/game-object';
 
 /**
  * A character preset is a template for character creation. It defines certain parameters that will

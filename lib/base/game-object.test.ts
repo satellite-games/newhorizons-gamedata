@@ -23,7 +23,7 @@ test('should properly create a blueprint and its corresponding game objects', ()
     { name: 'thomas', noise: 'toot toot' },
   ];
 
-  let trains: Train[] = [];
+  const trains: Train[] = [];
   for (const trainBlueprint of trainBlueprints) {
     trains.push(new Train(trainBlueprint));
   }
