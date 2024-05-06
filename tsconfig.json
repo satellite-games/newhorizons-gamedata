@@ -22,7 +22,7 @@
     "paths": {
       "@newhorizons/game-data": ["lib"]
     },
-    "types": ["vite/client", "vitest/globals", "@modyfi/vite-plugin-yaml/modules"]
+    "types": ["vite/client"]
   },
   "include": ["app", "lib", "tests"],
   "references": [{ "path": "./tsconfig.node.json" }]
