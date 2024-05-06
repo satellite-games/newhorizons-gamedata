@@ -1,0 +1,64 @@
+{
+  "name": "@newhorizons/game-data",
+  "version": "0.2.0",
+  "author": {
+    "name": "spuxx",
+    "email": "hi@spuxx.dev",
+    "url": "https://spuxx.dev"
+  },
+  "license": "GNU General Public License",
+  "keywords": [
+    "spuxx"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satellite-games/new-horizons-game-data"
+  },
+  "homepage": "https://github.com/satellite-games/new-horizons-game-data/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/satellite-games/new-horizons-game-data/issues"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "scripts": {
+    "start": "pnpm run dev",
+    "dev": "vite dev app",
+    "build": "vite build",
+    "test": "pnpm run test:unit",
+    "test:unit": "vitest run --coverage --reporter=default --reporter=junit --outputFile='reports/junit/junit.xml'",
+    "check": "pnpm types && pnpm run lint && pnpm run prettier-check",
+    "types": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx",
+    "prettier-check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.1.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.8.1",
+    "vitest": "^1.4.0"
+  }
+}
