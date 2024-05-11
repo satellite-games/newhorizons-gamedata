@@ -20,7 +20,7 @@
     // Set an alias for the lib folder
     "baseUrl": ".",
     "paths": {
-      "@newhorizons/game-data": ["lib"]
+      "@newhorizons/core": ["lib"]
     },
     "types": ["vite/client"]
   },

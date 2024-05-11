@@ -7,7 +7,7 @@ export default defineConfig({
   publicDir: 'app/public',
   resolve: {
     alias: {
-      '@newhorizons/game-data': '/lib',
+      '@newhorizons/core': '/lib',
     },
   },
   plugins: [
@@ -21,7 +21,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'lib'),
-      name: '@newhorizons/game-data',
+      name: '@newhorizons/core',
       formats: ['es'],
       fileName: `index`,
     },

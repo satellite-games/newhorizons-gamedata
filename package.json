@@ -1,5 +1,5 @@
 {
-  "name": "@newhorizons/game-data",
+  "name": "@newhorizons/core",
   "version": "0.2.0",
   "author": {
     "name": "spuxx",
@@ -12,11 +12,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/satellite-games/newhorizons-gamedata"
+    "url": "https://github.com/satellite-games/newhorizons-core"
   },
-  "homepage": "https://github.com/satellite-games/newhorizons-gamedata/blob/main/README.md",
+  "homepage": "https://github.com/satellite-games/newhorizons-core/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/satellite-games/newhorizons-gamedata/issues"
+    "url": "https://github.com/satellite-games/newhorizons-core/issues"
   },
   "type": "module",
   "main": "dist/index.js",
@@ -61,8 +61,5 @@
     "vite": "^5.2.8",
     "vite-plugin-dts": "^3.8.1",
     "vitest": "^1.4.0"
-  },
-  "peerDependencies": {
-    "@spuxx/browser-utils": "^0.1.0"
   }
 }

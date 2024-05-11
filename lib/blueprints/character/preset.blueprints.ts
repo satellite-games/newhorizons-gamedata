@@ -1,7 +1,7 @@
 import { Blueprint } from 'lib/base/game-object';
-import { CharacterPreset } from 'lib/game-objects';
+import { CharacterPreset } from 'lib/game-objects/character/preset.go';
 
-export const blueprints: Blueprint<CharacterPreset>[] = [
+export const characterPresets: Blueprint<CharacterPreset>[] = [
   {
     name: 'character/preset/default',
     attributePoints: 32,
@@ -27,3 +27,4 @@ export const blueprints: Blueprint<CharacterPreset>[] = [
     startFatePoints: 2,
   },
 ];
+export default characterPresets;
