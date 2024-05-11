@@ -1,7 +1,7 @@
 import { GameObject, Saved } from '..';
 import { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
 
-export default class Character extends GameObject {
+export class Character extends GameObject {
   /**
    * The character's metadata such as game version and character preset name.
    */
@@ -46,7 +46,7 @@ export default class Character extends GameObject {
    */
   inventory = [];
 
-  constructor(init: Partial<Saved<Character>>) {
+  constructor(init?: Partial<Saved<Character>>) {
     super({ name: 'character', ...init });
   }
 }
