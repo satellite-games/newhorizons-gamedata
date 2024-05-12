@@ -45,7 +45,7 @@ export class SecondaryAttribute extends GameObject {
     const primaryAttributeValues = primaryAttributes.map((primaryAttribute) =>
       primaryAttribute.getModifiedValue<PrimaryAttribute>(
         'current',
-        character.getModifiers({ modifiedName: primaryAttribute.name, modifiedKey: 'current' }),
+        character.getModifiers({ modifiedName: primaryAttribute.name }),
       ),
     );
     return Math.round(primaryAttributeValues.reduce((sum, value) => sum + value, 0) / this.formula.divisor);

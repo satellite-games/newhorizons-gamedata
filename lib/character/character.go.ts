@@ -105,14 +105,11 @@ export class Character extends GameObject {
   getModifiers<TGameObject = GameObject>(filter?: {
     modifiedName?: string;
     modifiedId?: string;
-    modifiedKey?: keyof TGameObject;
   }): Modifier<TGameObject>[] {
-    const { modifiedName, modifiedId, modifiedKey } = { ...filter };
     let modifiers = this.modifiers as unknown as Modifier<TGameObject>[];
     // Filter modifiers
-    if (modifiedName) modifiers = modifiers.filter((modifier) => modifier.modifiedName === modifiedName);
-    if (modifiedId) modifiers = modifiers.filter((modifier) => modifier.modifiedId === modifiedId);
-    if (modifiedKey) modifiers = modifiers.filter((modifier) => modifier.modifiedKey === modifiedKey);
+    if (filter?.modifiedName) modifiers = modifiers.filter((modifier) => modifier.modifiedName === filter.modifiedName);
+    if (filter?.modifiedId) modifiers = modifiers.filter((modifier) => modifier.modifiedId === filter.modifiedId);
     return modifiers;
   }
 }
