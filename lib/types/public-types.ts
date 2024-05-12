@@ -1,5 +1,6 @@
 import { Blueprint } from 'lib/base/game-object';
 import { CharacterPreset } from 'lib/game-objects/character/preset.go';
+import { PrimaryAttribute } from '../game-objects/character/primary-attribute.go';
 
 /**
  * The `BlueprintRegistry` contains all registered blueprints. Blueprint
@@ -7,6 +8,7 @@ import { CharacterPreset } from 'lib/game-objects/character/preset.go';
  */
 export interface BlueprintCollectionRegistry {
   'character/preset': Blueprint<CharacterPreset>[];
+  'character/primary-attribute': Blueprint<PrimaryAttribute>[];
 }
 
 /**

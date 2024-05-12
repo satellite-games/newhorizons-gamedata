@@ -3,7 +3,7 @@
 // they will not be included into the bundle.
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Types
-export * from './types';
+export * from './types/public-types';
 
 // Base
 export * from './base/game-object';
