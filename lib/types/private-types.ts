@@ -13,3 +13,8 @@ export type NonNumberPropertyNames<T> = {
 } extends { [_ in keyof T]: infer U }
   ? U
   : never;
+
+/**
+ * A numeric property of an object can potentially be modified by a modifier.
+ */
+export type NumericProperty<TObject = object> = keyof Omit<TObject, NonNumberPropertyNames<TObject>>;

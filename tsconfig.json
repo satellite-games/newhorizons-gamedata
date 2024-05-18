@@ -17,10 +17,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "verbatimModuleSyntax": true,
     // Set an alias for the lib folder
     "baseUrl": ".",
     "paths": {
-      "@newhorizons/core": ["lib"]
+      "@/*": ["./lib/*"]
     },
     "types": ["vite/client"]
   },

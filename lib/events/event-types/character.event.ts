@@ -1,5 +1,5 @@
 import { GameEvent } from '../event';
-import { GameEventInit, GameEventType } from '../types';
+import { type GameEventInit, GameEventType } from '../types';
 
 /**
  * An event related to a specific character.

@@ -1,5 +1,6 @@
 import { test, expect, describe } from 'vitest';
-import { Blueprint, GameObject, GameObjectInit } from './game-object';
+import { GameObject } from '../game-object/game-object';
+import type { Blueprint, GameObjectInit } from './types';
 
 /**
  * A simple train with a property, getter and a function.

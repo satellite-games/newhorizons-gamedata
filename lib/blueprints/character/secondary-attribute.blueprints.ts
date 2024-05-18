@@ -1,5 +1,5 @@
-import { Blueprint } from 'lib/base/game-object';
-import { SecondaryAttribute } from 'lib/game-objects/character/secondary-attribute.go';
+import type { Blueprint } from '@/base/game-object/types';
+import { SecondaryAttribute } from '@/game-objects/character/secondary-attribute.go';
 
 export const secondaryAttributes: Blueprint<SecondaryAttribute, 'total' | 'remaining'>[] = [
   {

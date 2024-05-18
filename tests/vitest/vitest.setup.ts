@@ -1,4 +1,4 @@
-import { EventLog } from 'lib/events';
+import { EventLog } from '@/events';
 import { afterEach, vi } from 'vitest';
 
 afterEach(() => {

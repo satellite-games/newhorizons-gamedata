@@ -1,6 +1,6 @@
-import { GameObject } from 'lib/base/game-object';
-import { Character } from 'lib/character';
-import { CharacterGameEvent } from 'lib/events/event-types/character.event';
+import { GameObject } from '@/base/game-object/game-object';
+import { Character } from '@/character/character.go';
+import { CharacterGameEvent } from '@/events/event-types/character.event';
 
 export type PrimaryAttributeName =
   | 'character/primary-attribute/courage'

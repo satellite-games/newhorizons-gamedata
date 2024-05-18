@@ -1,5 +1,5 @@
 import { EventLog } from './event-log';
-import { GameEventInit, GameEventType } from './types';
+import { type GameEventInit, GameEventType } from './types';
 
 /**
  * A game event. This is the base class for all game events.

@@ -1,8 +1,8 @@
-import { primaryAttributes } from 'lib/blueprints/character/primary-attribute.blueprints';
-import { PrimaryAttribute } from 'lib/game-objects/character/primary-attribute.go';
+import { primaryAttributes } from '@/blueprints/character/primary-attribute.blueprints';
+import { PrimaryAttribute } from '@/game-objects/character/primary-attribute.go';
 import { Character } from './character.go';
-import { secondaryAttributes } from 'lib/blueprints/character/secondary-attribute.blueprints';
-import { SecondaryAttribute } from 'lib/game-objects/character/secondary-attribute.go';
+import { secondaryAttributes } from '@/blueprints/character/secondary-attribute.blueprints';
+import { SecondaryAttribute } from '@/game-objects/character/secondary-attribute.go';
 
 /**
  * Creates a new character.

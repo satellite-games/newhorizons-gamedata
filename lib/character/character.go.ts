@@ -1,8 +1,8 @@
-import { SecondaryAttribute, SecondaryAttributeName } from 'lib/game-objects/character/secondary-attribute.go';
-import { GameObject, Saved } from '..';
-import { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
-import { PrimaryAttribute, PrimaryAttributeName } from 'lib/game-objects/character/primary-attribute.go';
-import { Modifier } from 'lib/game-objects/general/modifier.go';
+import { SecondaryAttribute, type SecondaryAttributeName } from '@/game-objects/character/secondary-attribute.go';
+import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
+import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute.go';
+import { GameObject } from '@/base/game-object';
+import type { Saved } from '@/base/game-object/types';
 
 export class Character extends GameObject {
   /**
@@ -88,28 +88,5 @@ export class Character extends GameObject {
     return this.secondaryAttributes.find(
       (secondaryAttribute) => secondaryAttribute.name === name,
     ) as SecondaryAttribute;
-  }
-
-  /**
-   * The list of all modifiers that are currently affecting the character.
-   */
-  get modifiers() {
-    const modifiers: Modifier[] = [];
-    return modifiers;
-  }
-
-  /**
-   * Returns all modifiers that are currently affecting the character.
-   * @param filter An optional filter to only return modifiers that match the filter.
-   */
-  getModifiers<TGameObject = GameObject>(filter?: {
-    modifiedName?: string;
-    modifiedId?: string;
-  }): Modifier<TGameObject>[] {
-    let modifiers = this.modifiers as unknown as Modifier<TGameObject>[];
-    // Filter modifiers
-    if (filter?.modifiedName) modifiers = modifiers.filter((modifier) => modifier.modifiedName === filter.modifiedName);
-    if (filter?.modifiedId) modifiers = modifiers.filter((modifier) => modifier.modifiedId === filter.modifiedId);
-    return modifiers;
   }
 }

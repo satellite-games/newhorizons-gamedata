@@ -1,5 +1,5 @@
-import { Blueprint } from 'lib/base/game-object';
-import { PrimaryAttribute } from 'lib/game-objects/character/primary-attribute.go';
+import type { Blueprint } from '@/base/game-object/types';
+import { PrimaryAttribute } from '@/game-objects/character/primary-attribute.go';
 
 export const primaryAttributes: Blueprint<PrimaryAttribute>[] = [
   {

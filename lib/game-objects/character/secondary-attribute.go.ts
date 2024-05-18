@@ -1,6 +1,6 @@
-import { GameObject } from 'lib/base/game-object';
-import { PrimaryAttribute, PrimaryAttributeName } from './primary-attribute.go';
-import { Character } from 'lib/character';
+import { GameObject } from '@/base/game-object/game-object';
+import { PrimaryAttribute, type PrimaryAttributeName } from './primary-attribute.go';
+import { Character } from '@/character/character.go';
 
 export type SecondaryAttributeName =
   | 'character/secondary-attribute/health-points'

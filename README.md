@@ -17,4 +17,4 @@ Almost all of New Horizon's game data is stored in the form of Blueprints. A Blu
 
 #### Adding new Blueprints to an existing Blueprint Collection
 
-It's quite easy to add a new Blueprint to an existing collection. Simply find and open the collection you want to edit in [`lib/blueprints`](blueprints) and add a new element to the array. Afterwards, you should run `pnpm check` to check for any errors, including TypeScript errors. If all checks pass without errors, you can commit your change to the repository.
+It's quite easy to add a new Blueprint to an existing collection. Simply find and open the collection you want to edit in `lib/blueprints`. and add a new element to the array. Afterwards, you should run `pnpm check` to check for any errors, including TypeScript errors. If all checks pass without errors, you can commit your change to the repository.

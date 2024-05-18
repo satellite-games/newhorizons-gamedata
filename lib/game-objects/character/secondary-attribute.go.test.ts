@@ -1,7 +1,8 @@
 import { describe, expect, test, beforeEach } from 'vitest';
-import { Character, createNewCharacter } from 'lib/character';
 import { SecondaryAttribute } from './secondary-attribute.go';
-import { Modifier } from '../general/modifier.go';
+import { createNewCharacter } from '@/character/create-character';
+import type { Character } from '@/character/character.go';
+import { Modifier } from '@/base/modifier';
 
 let character: Character;
 
@@ -40,7 +41,7 @@ describe('total', () => {
     const healthPoints = character.getSecondaryAttribute('character/secondary-attribute/health-points');
     healthPoints.difference = 5;
     const modifier = new Modifier<SecondaryAttribute>({
-      name: 'modifier',
+      cause: 'modifier',
       modifiedName: 'character/secondary-attribute/health-points',
       modifiedKeys: ['total', 'remaining'],
       amount: -5,

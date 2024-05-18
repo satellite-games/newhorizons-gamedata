@@ -1,15 +1,11 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: 'app/public',
-  resolve: {
-    alias: {
-      '@newhorizons/core': '/lib',
-    },
-  },
   plugins: [
     dts({
       include: ['lib/**/*'],
@@ -17,6 +13,7 @@ export default defineConfig({
       tsconfigPath: './tsconfig.build.json',
       rollupTypes: true,
     }),
+    tsconfigPaths(),
   ],
   build: {
     lib: {

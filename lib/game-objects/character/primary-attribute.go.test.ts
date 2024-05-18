@@ -1,9 +1,9 @@
-import primaryAttributes from 'lib/blueprints/character/primary-attribute.blueprints';
-import { createNewCharacter } from 'lib/character';
+import primaryAttributes from '@/blueprints/character/primary-attribute.blueprints';
+import { createNewCharacter } from '@/character';
 import { testGameObject } from 'tests/vitest/helpers/test-game-object';
 import { describe, expect, test } from 'vitest';
 import { PrimaryAttribute } from './primary-attribute.go';
-import { EventLog } from 'lib/events';
+import { EventLog } from '@/events';
 
 testGameObject(PrimaryAttribute, 'character/primary-attribute');
 

@@ -1,5 +1,5 @@
-import { Blueprint } from 'lib/base/game-object';
-import { CharacterPreset } from 'lib/game-objects/character/preset.go';
+import { type Blueprint } from '@/base/game-object';
+import { CharacterPreset } from '@/game-objects/character/preset.go';
 import { PrimaryAttribute } from '../game-objects/character/primary-attribute.go';
 
 /**
