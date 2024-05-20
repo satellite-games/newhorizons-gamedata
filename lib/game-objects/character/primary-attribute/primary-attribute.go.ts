@@ -1,16 +1,7 @@
 import { GameObject } from '@/base/game-object/game-object';
 import { Character } from '@/character/character.go';
 import { CharacterGameEvent } from '@/events/event-types/character.event';
-
-export type PrimaryAttributeName =
-  | 'character/primary-attribute/courage'
-  | 'character/primary-attribute/cleverness'
-  | 'character/primary-attribute/intuition'
-  | 'character/primary-attribute/charisma'
-  | 'character/primary-attribute/agility'
-  | 'character/primary-attribute/dexterity'
-  | 'character/primary-attribute/constitution'
-  | 'character/primary-attribute/strength';
+import type { PrimaryAttributeName } from './primary-attribute.registry';
 
 export class PrimaryAttribute extends GameObject {
   declare name: PrimaryAttributeName;

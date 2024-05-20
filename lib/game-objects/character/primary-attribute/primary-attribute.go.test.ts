@@ -1,4 +1,4 @@
-import primaryAttributes from '@/blueprints/character/primary-attribute.blueprints';
+import primaryAttributes from '@/game-objects/character/primary-attribute/primary-attribute.blueprints';
 import { createNewCharacter } from '@/character';
 import { testGameObject } from 'tests/vitest/helpers/test-game-object';
 import { describe, expect, test } from 'vitest';

@@ -1,8 +1,8 @@
-import { SecondaryAttribute, type SecondaryAttributeName } from '@/game-objects/character/secondary-attribute.go';
-import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
-import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute.go';
 import { GameObject } from '@/base/game-object';
 import type { Saved } from '@/base/game-object/types';
+import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
+import { SecondaryAttribute, type SecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
+import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
 
 export class Character extends GameObject {
   /**

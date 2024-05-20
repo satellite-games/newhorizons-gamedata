@@ -1,58 +1,58 @@
 import type { Blueprint } from '@/base/game-object/types';
-import { PrimaryAttribute } from '@/game-objects/character/primary-attribute.go';
+import { PrimaryAttribute } from '@/game-objects/character/primary-attribute';
 
 export const primaryAttributes: Blueprint<PrimaryAttribute>[] = [
   {
-    name: 'character/primary-attribute/courage',
+    name: 'character.primary-attribute.courage',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/cleverness',
+    name: 'character.primary-attribute.cleverness',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/intuition',
+    name: 'character.primary-attribute.intuition',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/charisma',
+    name: 'character.primary-attribute.charisma',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/agility',
+    name: 'character.primary-attribute.agility',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/dexterity',
+    name: 'character.primary-attribute.dexterity',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/constitution',
+    name: 'character.primary-attribute.constitution',
     current: 8,
     start: 8,
     min: 8,
     max: 14,
   },
   {
-    name: 'character/primary-attribute/strength',
+    name: 'character.primary-attribute.strength',
     current: 8,
     start: 8,
     min: 8,

@@ -1,4 +1,4 @@
-import { GameObject } from '../../base/game-object/game-object';
+import { GameObject } from '@/base/game-object/game-object';
 
 /**
  * A character preset is a template for character creation. It defines certain parameters that will

@@ -1,14 +1,7 @@
 import { GameObject } from '@/base/game-object/game-object';
-import { PrimaryAttribute, type PrimaryAttributeName } from './primary-attribute.go';
+import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { Character } from '@/character/character.go';
-
-export type SecondaryAttributeName =
-  | 'character/secondary-attribute/health-points'
-  | 'character/secondary-attribute/stamina-points'
-  | 'character/secondary-attribute/reaction'
-  | 'character/secondary-attribute/defense'
-  | 'character/secondary-attribute/speed'
-  | 'character/secondary-attribute/critical-hit-threshold';
+import type { SecondaryAttributeName } from './secondary-attribute.registry';
 
 interface SecondaryAttributeFormula {
   /**

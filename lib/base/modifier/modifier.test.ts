@@ -1,9 +1,9 @@
-import { test, expect } from 'vitest';
 import { GameObject } from '@/base/game-object/game-object';
 import type { GameObjectInit } from '@/base/game-object/types';
-import { Modifier } from './modifier';
 import { createNewCharacter } from '@/character/create-character';
-import type { PrimaryAttribute } from '@/game-objects/character/primary-attribute.go';
+import type { PrimaryAttribute } from '@/game-objects/character/primary-attribute';
+import { expect, test } from 'vitest';
+import { Modifier } from './modifier';
 
 /**
  * A simple train with a property, getter and a function.
@@ -65,7 +65,7 @@ test('should match the modifier using the game object id', () => {
 
 test('should modify multiple keys', () => {
   const character = createNewCharacter();
-  const strength = character.getPrimaryAttribute('character/primary-attribute/strength');
+  const strength = character.getPrimaryAttribute('character.primary-attribute.strength');
   const modifier = new Modifier<PrimaryAttribute>({
     cause: 'modifier',
     modifiedName: strength.name,

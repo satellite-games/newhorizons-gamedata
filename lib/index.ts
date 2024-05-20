@@ -18,10 +18,8 @@ export * from './events/event-types/character.event';
 // Character
 export * from './character';
 
-// Blueprints and game objects
-export * from './game-objects/character/preset.go';
-export * from './blueprints/character/preset.blueprints';
-export * from './game-objects/character/primary-attribute.go';
-export * from './blueprints/character/primary-attribute.blueprints';
-export * from './game-objects/character/secondary-attribute.go';
-export * from './blueprints/character/secondary-attribute.blueprints';
+// Game objects
+export * from './game-objects/character/preset';
+export * from './game-objects/character/primary-attribute';
+export * from './game-objects/character/secondary-attribute';
+export * from './game-objects/character/origin';

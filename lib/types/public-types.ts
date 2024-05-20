@@ -1,6 +1,6 @@
 import { type Blueprint } from '@/base/game-object';
-import { CharacterPreset } from '@/game-objects/character/preset.go';
-import { PrimaryAttribute } from '../game-objects/character/primary-attribute.go';
+import { CharacterPreset } from '@/game-objects/character/preset/preset.go';
+import { PrimaryAttribute } from '../game-objects/character/primary-attribute/primary-attribute.go';
 
 /**
  * The `BlueprintRegistry` contains all registered blueprints. Blueprint

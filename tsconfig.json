@@ -21,10 +21,11 @@
     // Set an alias for the lib folder
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./lib/*"]
+      "@/*": ["./lib/*"],
+      "scripts/*": ["./scripts/*"]
     },
     "types": ["vite/client"]
   },
-  "include": ["app", "lib", "tests"],
+  "include": ["app", "lib", "tests", "scripts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
