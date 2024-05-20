@@ -1,5 +1,5 @@
 import { GameObject } from '@/base/game-object';
-import type { PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
+import type { CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import type { CharacterOriginName } from './origin.registry';
 
 /**
@@ -13,7 +13,7 @@ export class CharacterOrigin extends GameObject {
    * The list of primary attributes that the character will receive a bonus for.
    * Note: At this time, each origin only provides a bonus of +1 to a single primary attribute.
    */
-  declare primaryAttributeBonuses: Partial<Record<PrimaryAttributeName, number>>;
+  declare primaryAttributeBonuses: Partial<Record<CharacterPrimaryAttributeName, number>>;
   /**
    * The list of traits that usually suit characters of this origin. This is merely
    * a suggestion and is intended to help players create characters that fit the origin.

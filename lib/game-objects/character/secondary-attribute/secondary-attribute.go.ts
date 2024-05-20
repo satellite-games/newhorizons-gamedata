@@ -1,13 +1,13 @@
 import { GameObject } from '@/base/game-object/game-object';
-import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
+import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { Character } from '@/character/character.go';
-import type { SecondaryAttributeName } from './secondary-attribute.registry';
+import type { CharacterSecondaryAttributeName } from './secondary-attribute.registry';
 
 interface SecondaryAttributeFormula {
   /**
    * The primary attributes that are used to calculate the secondary attribute.
    */
-  primaryAttributes: PrimaryAttributeName[];
+  primaryAttributes: CharacterPrimaryAttributeName[];
   /**
    * The divisor used in the formula.
    */
@@ -15,7 +15,7 @@ interface SecondaryAttributeFormula {
 }
 
 export class SecondaryAttribute extends GameObject {
-  declare name: SecondaryAttributeName;
+  declare name: CharacterSecondaryAttributeName;
   /**
    * The current difference between the total and remaining value of the secondary attribute.
    * Not all secondary attributes can be reduced like this.

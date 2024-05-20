@@ -1,10 +1,10 @@
 import { GameObject } from '@/base/game-object/game-object';
 import { Character } from '@/character/character.go';
 import { CharacterGameEvent } from '@/events/event-types/character.event';
-import type { PrimaryAttributeName } from './primary-attribute.registry';
+import type { CharacterPrimaryAttributeName } from './primary-attribute.registry';
 
 export class PrimaryAttribute extends GameObject {
-  declare name: PrimaryAttributeName;
+  declare name: CharacterPrimaryAttributeName;
   /**
    * The current value of the primary attribute.
    */

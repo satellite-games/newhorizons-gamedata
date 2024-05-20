@@ -1,7 +1,7 @@
 import { GameObject } from '@/base/game-object';
 import type { Saved } from '@/base/game-object/types';
-import { PrimaryAttribute, type PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
-import { SecondaryAttribute, type SecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
+import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
+import { SecondaryAttribute, type CharacterSecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
 
 export class Character extends GameObject {
@@ -76,7 +76,7 @@ export class Character extends GameObject {
    * Returns a primary attribute by its name.
    * @param name The name of the primary attribute.
    */
-  getPrimaryAttribute(name: PrimaryAttributeName): PrimaryAttribute {
+  getPrimaryAttribute(name: CharacterPrimaryAttributeName): PrimaryAttribute {
     return this.primaryAttributes.find((primaryAttribute) => primaryAttribute.name === name) as PrimaryAttribute;
   }
 
@@ -84,7 +84,7 @@ export class Character extends GameObject {
    * Returns a secondary attribute by its name.
    * @param name The name of the secondary attribute.
    */
-  getSecondaryAttribute(name: SecondaryAttributeName): SecondaryAttribute {
+  getSecondaryAttribute(name: CharacterSecondaryAttributeName): SecondaryAttribute {
     return this.secondaryAttributes.find(
       (secondaryAttribute) => secondaryAttribute.name === name,
     ) as SecondaryAttribute;
