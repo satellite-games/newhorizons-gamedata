@@ -1,0 +1,9 @@
+---
+character:
+  secondary-attribute:
+    health-points: Lebenspunkte
+    stamina-points: Ausdauerpunkte
+    reaction: Reaktion
+    defense: Verteidigung
+    speed: Geschwindigkeit
+    critical-hit-threshold: Kritische Trefferschwelle

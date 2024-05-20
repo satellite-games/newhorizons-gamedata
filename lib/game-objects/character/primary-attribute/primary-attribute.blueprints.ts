@@ -59,4 +59,3 @@ export const primaryAttributes: Blueprint<PrimaryAttribute>[] = [
     max: 14,
   },
 ];
-export default primaryAttributes;

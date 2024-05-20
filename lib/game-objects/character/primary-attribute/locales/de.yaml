@@ -1,0 +1,11 @@
+---
+character:
+  primary-attribute:
+    agility: 'Beweglichkeit'
+    charisma: 'Charisma'
+    cleverness: 'Klugheit'
+    courage: 'Mut'
+    dexterity: 'Fingerfertigkeit'
+    constitution: 'Konstitution'
+    intuition: 'Intuition'
+    strength: 'Stärke'

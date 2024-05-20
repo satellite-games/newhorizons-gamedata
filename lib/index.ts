@@ -5,6 +5,9 @@
 // Types
 export * from './types/public-types';
 
+// Locales
+export { de } from './locales/de';
+
 // Base
 export * from './base/game-object';
 export * from './base/modifier';

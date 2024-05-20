@@ -24,7 +24,7 @@
       "@/*": ["./lib/*"],
       "scripts/*": ["./scripts/*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "@modyfi/vite-plugin-yaml/modules"]
   },
   "include": ["app", "lib", "tests", "scripts"],
   "references": [{ "path": "./tsconfig.node.json" }]

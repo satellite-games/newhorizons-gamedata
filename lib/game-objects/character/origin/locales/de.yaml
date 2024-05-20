@@ -1,0 +1,14 @@
+---
+character:
+  origin:
+    earth-urban: 'Erde — Großstädte und Raumstationen'
+    earth-rural: 'Erde — Abseits der Städte'
+    mars: 'Mars'
+    venus: 'Venus'
+    ceres: 'Ceres und der Asteroidengürtel'
+    europa: 'Europa'
+    ganymede: 'Ganymed'
+    titan: 'Titan'
+    miranda: 'Trümmerstadt Miranda'
+    codex-triton: 'Silbernes Reich - Triton'
+    codex-moons: 'Silbernes Reich - Minenkolonien'

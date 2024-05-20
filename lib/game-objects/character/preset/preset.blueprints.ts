@@ -27,4 +27,3 @@ export const characterPresets: Blueprint<CharacterPreset>[] = [
     startFatePoints: 2,
   },
 ];
-export default characterPresets;
