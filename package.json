@@ -47,7 +47,8 @@
     "madge": "pnpm run madge:orphans && pnpm run madge:circular",
     "madge:orphans": "madge --orphans lib/index.ts",
     "madge:circular": "madge --circular lib/index.ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "create-registry": "node scripts/create-registry.js"
   },
   "devDependencies": {
     "@types/node": "^20.12.10",

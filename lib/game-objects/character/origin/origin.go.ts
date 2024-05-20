@@ -1,5 +1,6 @@
 import { GameObject } from '@/base/game-object';
 import type { PrimaryAttributeName } from '@/game-objects/character/primary-attribute';
+import type { CharacterOriginName } from './origin.registry';
 
 /**
  * The character origin defines the cultural background of a character. It usually matches the
@@ -7,6 +8,7 @@ import type { PrimaryAttributeName } from '@/game-objects/character/primary-attr
  * most of their life or simply the culture that had the most influence on the character's identity.
  */
 export class CharacterOrigin extends GameObject {
+  declare name: CharacterOriginName;
   /**
    * The list of primary attributes that the character will receive a bonus for.
    * Note: At this time, each origin only provides a bonus of +1 to a single primary attribute.

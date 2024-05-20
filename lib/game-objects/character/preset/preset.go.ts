@@ -1,10 +1,12 @@
 import { GameObject } from '@/base/game-object/game-object';
+import type { CharacterPresetName } from './preset.registry';
 
 /**
  * A character preset is a template for character creation. It defines certain parameters that will
  * impact the character's creation process.
  */
 export class CharacterPreset extends GameObject {
+  declare name: CharacterPresetName;
   /**
    * The number of attribute points that the character will have. Attribute points can be spent
    * to increase the character's attributes.
