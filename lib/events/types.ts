@@ -1,5 +1,19 @@
 import { type NonFunctionPropertyNames } from '@/types/private-types';
-import { GameEvent } from './event';
+
+export interface IGameEvent {
+  /**
+   * The type of event.
+   */
+  type: GameEventType;
+  /**
+   * The message of the event.
+   */
+  message: string;
+  /**
+   * The timestamp of the event. This is an ISO 8601 string.
+   */
+  timestamp: string;
+}
 
 export const GameEventType = {
   /**
@@ -9,7 +23,7 @@ export const GameEventType = {
 } as const;
 export type GameEventType = (typeof GameEventType)[keyof typeof GameEventType];
 
-export type GameEventInit<TEvent extends GameEvent> = Omit<
+export type GameEventInit<TEvent extends IGameEvent> = Omit<
   Pick<TEvent, NonFunctionPropertyNames<TEvent>>,
   'timestamp' | 'type'
 >;

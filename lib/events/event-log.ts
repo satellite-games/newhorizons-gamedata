@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
-import { GameEvent } from './event';
+import type { IGameEvent } from './types';
 
 export class EventLog {
-  private static _events: GameEvent[] = [];
+  private static _events: IGameEvent[] = [];
 
   /**
    * Adds an event to the event log.
    */
-  static addEvent(event: GameEvent): void {
+  static addEvent(event: IGameEvent): void {
     this._events.push(event);
     console.debug(`[game event] ${JSON.stringify(event)}`);
   }
@@ -15,7 +15,7 @@ export class EventLog {
   /**
    * Returns all events in the event log.
    */
-  static get events(): GameEvent[] {
+  static get events(): IGameEvent[] {
     return this._events;
   }
 
