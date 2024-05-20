@@ -1,4 +1,4 @@
-import { GameObject, type Blueprint, type BlueprintCollectionName } from '@/index';
+import { GameObject, type Blueprint, type BlueprintCollectionName } from '@/main';
 import { expect, test } from 'vitest';
 
 /**

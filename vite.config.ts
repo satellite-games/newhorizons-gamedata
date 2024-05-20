@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { UserConfig, defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import ViteYaml from '@modyfi/vite-plugin-yaml';
@@ -19,10 +19,9 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'lib'),
+      entry: { main: resolve(__dirname, 'lib/main.ts'), locales: resolve(__dirname, 'lib/locales.ts') },
       name: '@newhorizons/core',
       formats: ['es'],
-      fileName: `index`,
     },
   },
 });
