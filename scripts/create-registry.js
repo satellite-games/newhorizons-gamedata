@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+/* eslint-disable no-undef */
 import fs from 'fs';
 import path from 'path';
 import { argv } from 'process';
@@ -8,11 +9,13 @@ import prettier from 'prettier';
 // Check if a valid game object name was provided
 const gameObjectName = argv[2];
 if (!gameObjectName) {
-  throw new Error('You must provide a game object name.');
+  console.error('\x1b[31m%s\x1b[0m', 'You must provide a game object name.');
+  process.exit(1);
 }
 const [foo, bar] = gameObjectName.split('.');
 if (!foo || !bar) {
-  throw new Error("You must provide a valid game object name like 'foo.bar'");
+  console.error('\x1b[31m%s\x1b[0m', "You must provide a valid game object name like 'foo.bar'");
+  process.exit(1);
 }
 
 // Get the paths to the blueprints and registry files
@@ -24,7 +27,8 @@ const registryPath = `${folderPath}/${bar}.registry.ts`;
 
 // Check if the blueprints file exists
 if (!fs.existsSync(blueprintsPath)) {
-  throw new Error(`Blueprints file does not exist at '${blueprintsPath}'.`);
+  console.error('\x1b[31m%s\x1b[0m', `Blueprints file does not exist at '${blueprintsPath}'.`);
+  process.exit(1);
 }
 console.log(`Found blueprints file at '${blueprintsPath}'.`);
 
@@ -39,7 +43,8 @@ while ((match = nameRegex.exec(blueprintsFileContent)) !== null) {
   names.push(match[1]);
 }
 if (names.length === 0) {
-  throw new Error(`No names found in blueprints file at '${blueprintsPath}'.`);
+  console.error('\x1b[31m%s\x1b[0m', `No names found in blueprints file at '${blueprintsPath}'.`);
+  process.exit(1);
 }
 
 // Convert foo-foz.bar-baz to FooFozBarBaz

@@ -40,7 +40,7 @@
     "build": "vite build",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --coverage --reporter=default --reporter=junit --outputFile='reports/junit/junit.xml'",
-    "check": "pnpm types && pnpm run lint && pnpm run prettier-check && pnpm run madge",
+    "check": "pnpm types && pnpm run lint && pnpm run prettier-check && pnpm run madge && pnpm run lint-registries",
     "types": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx",
     "prettier-check": "prettier --check .",
@@ -48,7 +48,8 @@
     "madge:orphans": "madge --orphans lib/index.ts",
     "madge:circular": "madge --circular lib/index.ts",
     "format": "prettier --write .",
-    "create-registry": "node scripts/create-registry.js"
+    "create-registry": "node scripts/create-registry.js",
+    "lint-registries": "node scripts/lint-registries.js"
   },
   "devDependencies": {
     "@types/node": "^20.12.10",
