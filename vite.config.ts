@@ -1,4 +1,4 @@
-import { UserConfig, defineConfig } from 'vite';
+import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import ViteYaml from '@modyfi/vite-plugin-yaml';

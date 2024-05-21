@@ -1,4 +1,5 @@
 character:
   preset:
+    custom: Benutzerdefiniert
     default: Standard
     hero: Held:in
