@@ -30,6 +30,10 @@
     "./locales": {
       "types": "./dist/locales.d.ts",
       "import": "./dist/locales.js"
+    },
+    "./mocks": {
+      "types": "./dist/mocks.d.ts",
+      "import": "./dist/mocks.js"
     }
   },
   "files": [
@@ -39,8 +43,6 @@
     "package.json"
   ],
   "scripts": {
-    "start": "pnpm run dev",
-    "dev": "vite dev app",
     "build": "vite build",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --coverage --reporter=default --reporter=junit --outputFile='reports/junit/junit.xml'",

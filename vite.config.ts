@@ -19,7 +19,11 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: { main: resolve(__dirname, 'lib/main.ts'), locales: resolve(__dirname, 'lib/locales.ts') },
+      entry: {
+        main: resolve(__dirname, 'lib/main.ts'),
+        locales: resolve(__dirname, 'lib/locales.ts'),
+        mocks: resolve(__dirname, 'lib/mocks.ts'),
+      },
       name: '@newhorizons/core',
       formats: ['es'],
     },
