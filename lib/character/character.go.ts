@@ -12,7 +12,19 @@ export class Character extends GameObject {
   /**
    * The character's general data such as name and appearance.
    */
-  general!: CharacterGeneralData;
+  general: CharacterGeneralData = {
+    name: '',
+    originName: '',
+    sex: '',
+    age: 0,
+    birthday: '',
+    height: 0,
+    weight: 0,
+    appearance: '',
+    personality: '',
+    family: '',
+    socialStatus: 1,
+  };
   /**
    * The character's progress data such as experience points.
    */
