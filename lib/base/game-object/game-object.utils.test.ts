@@ -6,6 +6,6 @@ describe('getWikiPath', () => {
   it('should return the corect path for a blueprint', () => {
     const origin = characterOrigins[0];
     const path = getWikiPath(origin.name);
-    expect(path).toEqual(['basic-rules', 'appendix-character-origin', 'earth-urban']);
+    expect(path).toEqual({ book: 'basic-rules', chapter: 'appendix-character-origin', article: 'earth-urban' });
   });
 });

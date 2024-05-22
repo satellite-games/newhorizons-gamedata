@@ -5,7 +5,7 @@
  * @returns The path to the wiki article. The first element is the book,
  * the second element is the chapter, and the third element is the article.
  */
-export function getWikiPath(name: string): [string, string, string] {
+export function getWikiPath(name: string): { book: string; chapter: string; article: string } {
   const [category, collection, blueprint] = name.split('.');
   let book, chapter: string;
   switch (category) {
@@ -18,6 +18,6 @@ export function getWikiPath(name: string): [string, string, string] {
       chapter = `appendix-${category}-${collection}`;
       break;
   }
-  const article = blueprint;
-  return [book, chapter, article];
+  const result = { book, chapter, article: blueprint };
+  return result;
 }
