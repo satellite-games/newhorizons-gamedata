@@ -1,5 +1,4 @@
 character:
-  origin:
-    trait:
-      academic-education: Akademische Ausbildung
-      arrogance: Arroganz
+  trait:
+    academic-education: Akademische Ausbildung
+    arrogance: Arroganz
