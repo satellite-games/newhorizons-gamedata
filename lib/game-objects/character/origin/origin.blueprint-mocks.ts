@@ -1,10 +1,9 @@
 import type { Blueprint } from '@/base/game-object';
 import type { CharacterOrigin } from './origin.go';
-import type { CharacterOriginName } from './origin.registry';
 
 export const characterOriginMocks: Blueprint<CharacterOrigin>[] = [
   {
-    name: 'character.origin.vulcan' as unknown as CharacterOriginName,
+    name: 'character.origin.earth-urban',
     suitableTraits: ['character.trait.academic-education', 'character.trait.arrogance'],
     primaryAttributeBonuses: { 'character.primary-attribute.cleverness': 1 },
     fixedSkillBonuses: {
