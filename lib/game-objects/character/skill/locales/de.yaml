@@ -1,14 +1,67 @@
 character:
   skill:
-    crafting:
-      computers: Computer
-    knowledge:
-      astronomy: Astronomie
-      biology-and-medicine: Biologie und Medizin
-      chemistry: Chemie
-      general-knowledge: Allgemeinwissen
-    social:
-      soft-skills: Sozialkompetenz
-    vehicles:
-      spaceships: Raumschiffe
-      airplanes: Flugzeuge
+    energy-weapons: Energiewaffen
+    heavy-weapons: Schwere Waffen
+    melee-hands: Unbewaffneter Nahkampf
+    melee-weapons: Bewaffneter Nahkampf
+    onboard-weapons: Bordwaffen
+    pistols: Pistolen
+    rifles: Gewehre
+    throwing: Werfen
+    animal-training: Tierdressur
+    computers: Computer
+    cooking: Kochen
+    disguising: Verkleiden
+    drawing: Malen/Zeichnen
+    electrical-engineering: Elektrotechnik
+    explosives: Sprengstoffe
+    making-music: Musizieren
+    material-processing: Materialverarbeitung
+    mechanical-engineering: Maschinenbau
+    medical-care: Medizinische Versorgung
+    pharmaceutics: Pharmazie
+    playing-games: Zocken
+    programming: Programmieren
+    writing: Schreiben und Texten
+    art: Kunst
+    astronomy: Astronomie
+    biology-and-medicine: Biologie und Medizin
+    chemistry: Chemie
+    electronics: Elektronik
+    general-knowledge: Allgemeinwissen
+    gaming: Spiel und Videospiele
+    geology: Geologie
+    history: Geschichte
+    information-technology: Informatik
+    law: Recht
+    mathematics-and-economy: Mathematik und Wirtschaft
+    music: Musik
+    physics-and-mechanics: Physik und Mechanik
+    orientation: Orientierung
+    spaceflight: Raumfahrt
+    survival: Überleben
+    tactics-and-strategy: Taktik und Strategie
+    body-control: Körperbeherrschung
+    climbing: Klettern
+    dancing: Tanzen
+    diving: Tauchen
+    inebriating: Berauschen
+    perception: Aufmerksamkeit
+    running: Rennen
+    singing: Singen
+    sneaking-hiding: Schleichen und Verstecken
+    swimming: Schwimmen
+    acting: Schauspielerei
+    soft-skills: Sozialkompetenz
+    flirting: Flirten
+    inspiring: Begeistern
+    intimidating: Einschüchtern
+    judgement: Menschenkenntnis und Empathie
+    reasoning: Argumentieren
+    self-control: Selbstbeherrschung
+    teaching: Lehren
+    trading: Handeln und Feilschen
+    spaceships: Raumschiffe
+    airplanes: Flugzeuge
+    land-vehicles: Landfahrzeuge
+    water-vehicles: Wasserfahrzeuge
