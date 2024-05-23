@@ -5,7 +5,7 @@ import type { CharacterOriginName } from '@/main';
 export const mockedCharacterOrigins: Blueprint<CharacterOrigin>[] = [
   {
     name: 'character.origin.vulcan' as unknown as CharacterOriginName,
-    suitableTraits: [],
+    suitableTraits: ['character.trait.academic-education', 'character.trait.arrogance'],
     primaryAttributeBonuses: { 'character.primary-attribute.cleverness': 1 },
     fixedSkillBonuses: {
       'skill.crafting.computers': 2,
@@ -18,8 +18,8 @@ export const mockedCharacterOrigins: Blueprint<CharacterOrigin>[] = [
         skills: ['skill.vehicles.extraplanetary-flying', 'skill.vehicles.intraplanetary-flying'],
       },
       {
-        value: 1,
-        skills: ['skill.knowledge.astronomy', 'skill.knowledge.biology-and-medicine'],
+        value: 2,
+        skills: ['skill.knowledge.astronomy', 'skill.knowledge.biology-and-medicine', 'skill.knowledge.chemistry'],
       },
     ],
   },
