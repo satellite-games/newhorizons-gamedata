@@ -1,0 +1,14 @@
+character:
+  skill:
+    crafting:
+      computers: Computer
+    knowledge:
+      astronomy: Astronomie
+      biology-and-medicine: Biologie und Medizin
+      chemistry: Chemie
+      general-knowledge: Allgemeinwissen
+    social:
+      soft-skills: Sozialkompetenz
+    vehicles:
+      spaceships: Raumschiffe
+      airplanes: Flugzeuge
