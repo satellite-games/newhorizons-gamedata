@@ -132,7 +132,7 @@ export const characterOrigins: Blueprint<CharacterOrigin>[] = [
       'character.skill.computers': 1,
       'character.skill.cooking': 1,
       'character.skill.disguising': 1,
-      Skill_Crafting_Writing: 1,
+      'character.skill-writing': 1,
       'character.skill.general-knowledge': 2,
       'character.skill.inebriating': 1,
       'character.skill.perception': 2,
@@ -193,7 +193,7 @@ export const characterOrigins: Blueprint<CharacterOrigin>[] = [
     fixedSkillBonuses: {
       'character.skill.computers': 3,
       'character.skill.cooking': 1,
-      Skill_Crafting_Writing: 1,
+      'character.skill.writing': 1,
       'character.skill.general-knowledge': 3,
       'character.skill.swimming': 2,
       'character.skill.judgement': 1,
