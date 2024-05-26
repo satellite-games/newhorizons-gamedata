@@ -15,7 +15,7 @@ export function getWikiPath(name: string): { book: string; chapter: string; arti
   }
   switch (collection) {
     default:
-      chapter = `appendix-${category}-${collection}`;
+      chapter = `${category}-${collection}`;
       break;
   }
   const result = { book, chapter, article: blueprint };
