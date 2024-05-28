@@ -1,4 +1,4 @@
-import type { GameObjectRegistry } from '@/game-objects/game-object.registry';
+import type { GameObjectRegistry } from '@/game-object.registry';
 import type { NonFunctionPropertyNames } from '../../types/private-types';
 
 export interface IGameObject {
@@ -16,9 +16,23 @@ export interface IGameObject {
    */
   owner?: IGameObject | null;
   /**
+   * Returns the owner of the game object or null if it has no owner.
+   */
+  getOwner<TGameObject extends IGameObject>(): TGameObject | null;
+  /**
    * Any child game objects that are stored on this game object.
    */
   children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
+  /**
+   * Returns a specific type of children of the game object by the given name.
+   * @param name The name of the children to return.
+   */
+  getChildren<TKey extends keyof GameObjectRegistry>(name: TKey): GameObjectRegistry[TKey][];
+  /**
+   * Sets a specific type of children on the game object.
+   * @param children The children to set on the game object.
+   */
+  setChildren<TKey extends keyof GameObjectRegistry>(key: TKey, children: Array<GameObjectRegistry[TKey]>): void;
 }
 
 /**

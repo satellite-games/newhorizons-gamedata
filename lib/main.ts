@@ -22,7 +22,7 @@ export * from './events/event-types/character.event';
 export * from './character';
 
 // Game object registry
-export * from './game-objects/game-object.registry';
+export * from './game-object.registry';
 
 // Game objects
 export * from './game-objects/character/preset';

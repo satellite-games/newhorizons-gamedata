@@ -4,7 +4,7 @@ import type { Blueprint, IGameObject, Saved } from './types';
 import type { NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
 import type { Dependency } from '../dependency/dependency';
-import type { GameObjectRegistry } from '@/game-objects/game-object.registry';
+import type { GameObjectRegistry } from '@/game-object.registry';
 
 /**
  * A game object is an entity in the game world. It is a container for data and functions.
@@ -39,25 +39,14 @@ export class GameObject implements IGameObject {
     this.children = init.children;
   }
 
-  /**
-   * Returns the owner of the game object or null if it has no owner.
-   */
   getOwner<TGameObject extends IGameObject>(): TGameObject | null {
     return this.owner as TGameObject | null;
   }
 
-  /**
-   * Returns a specific type of children of the game object by the given name.
-   * @param name The name of the children to return.
-   */
   getChildren<TKey extends keyof GameObjectRegistry>(name: TKey): GameObjectRegistry[TKey][] {
     return (this.children?.[name] as GameObjectRegistry[TKey][]) ?? [];
   }
 
-  /**
-   * Sets a specific type of children on the game object.
-   * @param children The children to set on the game object.
-   */
   setChildren<TKey extends keyof GameObjectRegistry>(key: TKey, children: Array<GameObjectRegistry[TKey]>) {
     if (!this.children) this.children = {};
     this.children[key] = children;
