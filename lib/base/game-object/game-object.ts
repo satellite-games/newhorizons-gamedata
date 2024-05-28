@@ -4,7 +4,7 @@ import type { Blueprint, IGameObject, Saved } from './types';
 import type { NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
 import type { Dependency } from '../dependency/dependency';
-import type { GameObjectRegistry } from '@/game-object.registry';
+import type { GameObjectName, GameObjectRegistry } from '@/registry';
 
 /**
  * A game object is an entity in the game world. It is a container for data and functions.
@@ -16,7 +16,7 @@ export class GameObject implements IGameObject {
   owner?: IGameObject | null;
   modifiers?: Modifier<any>[];
   dependencies?: Dependency<any>[];
-  children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
+  children?: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
 
   constructor(init: {
     name: string;
@@ -24,7 +24,7 @@ export class GameObject implements IGameObject {
     owner?: IGameObject | null;
     modifiers?: Modifier<any>[];
     dependencies?: Dependency<any>[];
-    children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
+    children?: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
     [key: string]: any;
   }) {
     // Perform a shallow copy of the initialization object. This also covers
@@ -43,11 +43,11 @@ export class GameObject implements IGameObject {
     return this.owner as TGameObject | null;
   }
 
-  getChildren<TKey extends keyof GameObjectRegistry>(name: TKey): GameObjectRegistry[TKey][] {
+  getChildren<TKey extends GameObjectName>(name: TKey): GameObjectRegistry[TKey][] {
     return (this.children?.[name] as GameObjectRegistry[TKey][]) ?? [];
   }
 
-  setChildren<TKey extends keyof GameObjectRegistry>(key: TKey, children: Array<GameObjectRegistry[TKey]>) {
+  setChildren<TKey extends GameObjectName>(key: TKey, children: Array<GameObjectRegistry[TKey]>) {
     if (!this.children) this.children = {};
     this.children[key] = children;
   }
@@ -95,6 +95,27 @@ export class GameObject implements IGameObject {
       key,
       modifiers ?? (this.modifiers as Modifier<TGameObject>[]),
     );
+  }
+
+  /**
+   * Checks whether the given game object (e.g. the owner) meets all dependencies of this game object
+   * or causes any conflicts.
+   * @param gameObject The game object to check the dependencies against.
+   * @returns `true` if all dependencies are met and no conflicts are present or a list of all dependencies
+   * that failed the check.
+   */
+  checkDependencies<TTarget extends GameObject>(gameObject: TTarget): true | Dependency<unknown>[] {
+    let result: true | Dependency<unknown>[] = true;
+    if (this.dependencies) {
+      for (const dependency of this.dependencies) {
+        if (!dependency.check(gameObject)) {
+          if (result === true) result = [];
+          result.push(dependency);
+          break;
+        }
+      }
+    }
+    return result;
   }
 }
 

@@ -8,7 +8,7 @@ let character: Character;
 
 beforeEach(() => {
   character = createNewCharacter();
-  for (const primaryAttribute of character.children['character.primary-attribute']) {
+  for (const primaryAttribute of character.getChildren('character.primary-attribute')) {
     primaryAttribute.current = 10;
   }
 });

@@ -1,13 +1,13 @@
-import type { Character } from '@/character';
-import { characterOrigins, type CharacterOrigin } from './game-objects/character/origin';
-import { characterPresets, type CharacterPreset } from './game-objects/character/preset';
-import { primaryAttributes, type PrimaryAttribute } from './game-objects/character/primary-attribute';
-import { secondaryAttributes, type SecondaryAttribute } from './game-objects/character/secondary-attribute';
-import { characterSkills, type CharacterSkill } from './game-objects/character/skill';
-import type { CharacterSkillCategory } from './game-objects/character/skill-category/skill-category.go';
+import { Character } from '@/character';
+import { characterOrigins, CharacterOrigin } from './game-objects/character/origin';
+import { characterPresets, CharacterPreset } from './game-objects/character/preset';
+import { primaryAttributes, PrimaryAttribute } from './game-objects/character/primary-attribute';
+import { secondaryAttributes, SecondaryAttribute } from './game-objects/character/secondary-attribute';
+import { characterSkills, CharacterSkill } from './game-objects/character/skill';
+import { CharacterSkillCategory } from './game-objects/character/skill-category/skill-category.go';
 import {
   characterSkillSpecializations,
-  type CharacterSkillSpecialization,
+  CharacterSkillSpecialization,
 } from './game-objects/character/skill-specialization';
 import type { Blueprint } from './main';
 import { characterSkillCategories } from './game-objects/character/skill-category/skill-category.blueprints';

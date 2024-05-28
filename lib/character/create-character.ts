@@ -1,5 +1,7 @@
-import { PrimaryAttribute, primaryAttributes } from '@/game-objects/character/primary-attribute';
-import { SecondaryAttribute, secondaryAttributes } from '@/game-objects/character/secondary-attribute';
+import { primaryAttributes } from '@/game-objects/character/primary-attribute';
+import { PrimaryAttribute } from '@/game-objects/character/primary-attribute/primary-attribute.go';
+import { secondaryAttributes } from '@/game-objects/character/secondary-attribute';
+import { SecondaryAttribute } from '@/game-objects/character/secondary-attribute/secondary-attribute.go';
 import { Character } from './character.go';
 
 /**
@@ -11,11 +13,13 @@ export const createNewCharacter = (name?: string): Character => {
   // Set name
   character.general.name = name || 'Anonymous';
   // Add primary and secondary attributes
-  character.children['character.primary-attribute'] = primaryAttributes.map(
-    (blueprint) => new PrimaryAttribute({ ...blueprint, owner: character }),
+  character.setChildren(
+    'character.primary-attribute',
+    primaryAttributes.map((blueprint) => new PrimaryAttribute({ ...blueprint, owner: character })),
   );
-  character.children['character.secondary-attribute'] = secondaryAttributes.map(
-    (blueprint) => new SecondaryAttribute({ ...blueprint, owner: character }),
+  character.setChildren(
+    'character.secondary-attribute',
+    secondaryAttributes.map((blueprint) => new SecondaryAttribute({ ...blueprint, owner: character })),
   );
   return character;
 };

@@ -1,4 +1,4 @@
-import { GameObject, blueprints, type Blueprint } from '@/main';
+import { GameObject, type GameObjectName } from '@/main';
 import { expect, test } from 'vitest';
 
 /**
@@ -7,14 +7,14 @@ import { expect, test } from 'vitest';
 export const testGameObject = async <TGameObject extends GameObject>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor: new (...args: any[]) => TGameObject,
-  collectionName: keyof typeof blueprints,
+  gameObjectName: GameObjectName,
 ) => {
-  test(`should instantiate a game object of '${collectionName}'`, async () => {
-    const [folder, file] = collectionName.split('/');
-    const path = `lib/blueprints/${folder}/${file}.blueprints.ts`;
-    const module: { default: Blueprint<TGameObject>[] } = await import(path);
-    const blueprints = module.default;
+  test(`should instantiate a game object of '${gameObjectName}'`, async () => {
+    const mainModule = await import('@/main');
+    const blueprints = mainModule.blueprints[gameObjectName];
+    if (!blueprints) throw new Error(`Unable to find blueprints for game object '${gameObjectName}'.`);
     const gameObject = new constructor(blueprints[0]);
+
     // Assertions
     expect(gameObject).toBeDefined();
     expect(gameObject).toBeInstanceOf(constructor);

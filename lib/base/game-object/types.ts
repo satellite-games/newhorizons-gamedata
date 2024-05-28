@@ -1,4 +1,4 @@
-import type { GameObjectRegistry } from '@/game-object.registry';
+import type { GameObjectRegistry } from '@/registry';
 import type { NonFunctionPropertyNames } from '../../types/private-types';
 
 export interface IGameObject {
