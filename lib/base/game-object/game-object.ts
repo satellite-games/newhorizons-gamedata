@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import type { Blueprint, IGameObject, Saved } from './types';
 import type { NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
+import type { GameObjectRegistry } from '@/game-objects/game-object.registry';
 
 /**
  * A game object is an entity in the game world. It is a container for data and functions.
@@ -12,13 +13,16 @@ export class GameObject implements IGameObject {
   name: string;
   id: string;
   owner?: IGameObject | null;
+  modifiers?: Modifier<any>[];
   modifiers?: Modifier<unknown>[];
+  children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
 
   constructor(init: {
     name: string;
     id?: string;
     owner?: IGameObject | null;
     modifiers?: Modifier<any>[];
+    children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
     [key: string]: any;
   }) {
     // Perform a shallow copy of the initialization object. This also covers
@@ -29,6 +33,7 @@ export class GameObject implements IGameObject {
     this.id = init.id ?? uuidv4();
     this.owner = init.owner ?? null;
     this.modifiers = init.modifiers;
+    this.children = init.children;
   }
 
   /**
@@ -36,6 +41,14 @@ export class GameObject implements IGameObject {
    */
   getOwner<TGameObject extends IGameObject>(): TGameObject | null {
     return this.owner as TGameObject | null;
+  }
+
+  /**
+   * Returns a specific type of children of the game object by the given name.
+   * @param name The name of the children to return.
+   */
+  getChildren<TKey extends keyof GameObjectRegistry>(name: TKey): GameObjectRegistry[TKey][] {
+    return (this.children?.[name] as GameObjectRegistry[TKey][]) ?? [];
   }
 
   /**

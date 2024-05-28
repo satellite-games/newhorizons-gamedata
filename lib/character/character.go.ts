@@ -3,6 +3,7 @@ import type { Saved } from '@/base/game-object/types';
 import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { SecondaryAttribute, type CharacterSecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
+import type { CharacterSkill } from '@/game-objects/character/skill';
 
 export class Character extends GameObject {
   /**
@@ -32,46 +33,30 @@ export class Character extends GameObject {
     experiencePointsSpent: 0,
     experiencePointsTotal: 0,
   };
-  /**
-   * The character's primary attributes.
-   */
-  primaryAttributes: PrimaryAttribute[] = [];
-  /**
-   * The character's secondary attributes.
-   */
-  secondaryAttributes: SecondaryAttribute[] = [];
-  /**
-   * The character's traits.
-   */
-  traits = [];
-  /**
-   * The character's skills.
-   */
-  skills = [];
-  /**
-   * The character's abilities.
-   */
-  abilities = [];
-  /**
-   * The character's apps.
-   */
-  apps = [];
-  /**
-   * The character's equipment.
-   */
-  equipment = [];
-  /**
-   * The character's implants.
-   */
-  implants = [];
-  /**
-   * The character's inventory.
-   */
-  inventory = [];
-  /**
-   * The character's active status effects.
-   */
-  statusEffects = [];
+
+  children: {
+    'character.primary-attribute': PrimaryAttribute[];
+    'character.secondary-attribute': SecondaryAttribute[];
+    // 'character.trait': [];
+    'character.skill': CharacterSkill[];
+    // 'character.abilities': [];
+    // 'character.app': [];
+    // 'character.equipment': [];
+    // 'character.implant': [];
+    // 'character.inventory': [];
+    // 'character.status-effect': [];
+  } = {
+    'character.primary-attribute': [],
+    'character.secondary-attribute': [],
+    // 'character.trait': [],
+    'character.skill': [],
+    // 'character.abilities': [],
+    // 'character.app': [],
+    // 'character.equipment': [],
+    // 'character.implant': [],
+    // 'character.inventory': [],
+    // 'character.status-effect': [],
+  };
 
   constructor(init?: Partial<Saved<Character>>) {
     super({ name: 'character', ...init });
@@ -89,7 +74,9 @@ export class Character extends GameObject {
    * @param name The name of the primary attribute.
    */
   getPrimaryAttribute(name: CharacterPrimaryAttributeName): PrimaryAttribute {
-    return this.primaryAttributes.find((primaryAttribute) => primaryAttribute.name === name) as PrimaryAttribute;
+    return this.getChildren('character.primary-attribute').find(
+      (primaryAttribute) => primaryAttribute.name === name,
+    ) as PrimaryAttribute;
   }
 
   /**
@@ -97,7 +84,7 @@ export class Character extends GameObject {
    * @param name The name of the secondary attribute.
    */
   getSecondaryAttribute(name: CharacterSecondaryAttributeName): SecondaryAttribute {
-    return this.secondaryAttributes.find(
+    return this.getChildren('character.secondary-attribute').find(
       (secondaryAttribute) => secondaryAttribute.name === name,
     ) as SecondaryAttribute;
   }

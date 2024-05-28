@@ -1,3 +1,4 @@
+import type { GameObjectRegistry } from '@/game-objects/game-object.registry';
 import type { NonFunctionPropertyNames } from '../../types/private-types';
 
 export interface IGameObject {
@@ -14,6 +15,10 @@ export interface IGameObject {
    * What game object owns this game object. May be null.
    */
   owner?: IGameObject | null;
+  /**
+   * Any child game objects that are stored on this game object.
+   */
+  children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
 }
 
 /**
