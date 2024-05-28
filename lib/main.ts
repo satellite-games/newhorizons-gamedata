@@ -2,8 +2,6 @@
 // Make sure to re-export all data and objects through this file. Otherwise
 // they will not be included into the bundle.
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// Types
-export * from './types/public-types';
 
 // Base
 export * from './base/game-object';
@@ -21,8 +19,8 @@ export * from './events/event-types/character.event';
 // Character
 export * from './character';
 
-// Game object registry
-export * from './game-object.registry';
+// Registry
+export * from './registry';
 
 // Game objects
 export * from './game-objects/character/preset';

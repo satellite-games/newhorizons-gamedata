@@ -1,4 +1,4 @@
-import { GameObject, type Blueprint, type BlueprintCollectionName } from '@/main';
+import { GameObject, blueprints, type Blueprint } from '@/main';
 import { expect, test } from 'vitest';
 
 /**
@@ -7,7 +7,7 @@ import { expect, test } from 'vitest';
 export const testGameObject = async <TGameObject extends GameObject>(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor: new (...args: any[]) => TGameObject,
-  collectionName: BlueprintCollectionName,
+  collectionName: keyof typeof blueprints,
 ) => {
   test(`should instantiate a game object of '${collectionName}'`, async () => {
     const [folder, file] = collectionName.split('/');

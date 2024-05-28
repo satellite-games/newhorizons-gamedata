@@ -5,7 +5,7 @@ import { describe, expect, test } from 'vitest';
 import { PrimaryAttribute } from './primary-attribute.go';
 import { EventLog } from '@/events';
 
-testGameObject(PrimaryAttribute, 'character/primary-attribute');
+testGameObject(PrimaryAttribute, 'character.primary-attribute');
 
 describe('changeValue', () => {
   test('should increase the current value of the primary attribute by the specified amount', () => {
