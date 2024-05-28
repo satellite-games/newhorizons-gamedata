@@ -18,6 +18,9 @@ export * from './events/event-types/character.event';
 // Character
 export * from './character';
 
+// Game object registry
+export * from './game-objects/game-object.registry';
+
 // Game objects
 export * from './game-objects/character/preset';
 export * from './game-objects/character/primary-attribute';
