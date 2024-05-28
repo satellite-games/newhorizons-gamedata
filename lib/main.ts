@@ -9,6 +9,9 @@ export * from './types/public-types';
 export * from './base/game-object';
 export * from './base/modifier';
 
+// Constants
+export * from './constants';
+
 // Events
 export * from './events/event';
 export * from './events/event-log';
