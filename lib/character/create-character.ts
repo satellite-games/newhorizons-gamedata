@@ -11,10 +11,10 @@ export const createNewCharacter = (name?: string): Character => {
   // Set name
   character.general.name = name || 'Anonymous';
   // Add primary and secondary attributes
-  character.primaryAttributes = primaryAttributes.map(
+  character.children['character.primary-attribute'] = primaryAttributes.map(
     (blueprint) => new PrimaryAttribute({ ...blueprint, owner: character }),
   );
-  character.secondaryAttributes = secondaryAttributes.map(
+  character.children['character.secondary-attribute'] = secondaryAttributes.map(
     (blueprint) => new SecondaryAttribute({ ...blueprint, owner: character }),
   );
   return character;
