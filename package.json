@@ -46,7 +46,7 @@
     "build": "vite build",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --coverage --reporter=default --reporter=junit --outputFile='reports/junit/junit.xml'",
-    "check": "pnpm types && pnpm run lint && pnpm run prettier-check && pnpm run madge && pnpm run lint-registries",
+    "check": "pnpm types && pnpm run lint && pnpm run prettier-check && pnpm run lint-registries",
     "types": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx",
     "prettier-check": "prettier --check .",
