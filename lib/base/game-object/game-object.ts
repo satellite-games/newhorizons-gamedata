@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import type { Blueprint, IGameObject, Saved } from './types';
 import type { NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
+import type { Dependency } from '../dependency/dependency';
 import type { GameObjectRegistry } from '@/game-objects/game-object.registry';
 
 /**
@@ -14,7 +15,7 @@ export class GameObject implements IGameObject {
   id: string;
   owner?: IGameObject | null;
   modifiers?: Modifier<any>[];
-  modifiers?: Modifier<unknown>[];
+  dependencies?: Dependency<any>[];
   children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
 
   constructor(init: {
@@ -22,6 +23,7 @@ export class GameObject implements IGameObject {
     id?: string;
     owner?: IGameObject | null;
     modifiers?: Modifier<any>[];
+    dependencies?: Dependency<any>[];
     children?: Partial<Record<keyof GameObjectRegistry, Array<GameObjectRegistry[keyof GameObjectRegistry]>>>;
     [key: string]: any;
   }) {
@@ -33,6 +35,7 @@ export class GameObject implements IGameObject {
     this.id = init.id ?? uuidv4();
     this.owner = init.owner ?? null;
     this.modifiers = init.modifiers;
+    this.dependencies = init.dependencies;
     this.children = init.children;
   }
 
@@ -52,10 +55,22 @@ export class GameObject implements IGameObject {
   }
 
   /**
-   * Serializes the game object. This is useful for saving the game state to a file.
+   * Sets a specific type of children on the game object.
+   * @param children The children to set on the game object.
    */
-  serialize(): string {
-    const object = { ...this };
+  setChildren<TKey extends keyof GameObjectRegistry>(key: TKey, children: Array<GameObjectRegistry[TKey]>) {
+    if (!this.children) this.children = {};
+    this.children[key] = children;
+  }
+
+  /**
+   * Serializes the game object. This is useful for saving the game state to a file.
+   * @param state The state of the game object to serialize. Defaults to the current state
+   * (`this`) of the game object. A different state may be provided to apply changes to the
+   * game object before serialization.
+   */
+  serialize(state?: typeof this): string {
+    const object = state ? { ...state } : { ...this };
     delete object.owner;
     return JSON.stringify(object);
   }

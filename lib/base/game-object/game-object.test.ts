@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { test, expect, describe } from 'vitest';
 import { GameObject } from '../game-object/game-object';
 import type { Blueprint, GameObjectInit } from './types';
@@ -71,10 +72,15 @@ describe('getChildren', () => {
   test('should return the children of the game object by the given name', () => {
     class Parent extends GameObject {}
     class Child extends GameObject {}
-    const parent = new Parent({ name: 'parent' });
-    const child1 = new Child({ name: 'child-1', owner: parent });
-    const child2 = new Child({ name: 'child-2', owner: parent });
-    parent.children = { 'child-1': [child1], 'child-2': [child2] } as typeof parent.children;
+    const parent = new Parent({
+      name: 'parent',
+      children: { 'child-1': Array<Child>, 'child-2': Array<Child> } as any,
+    });
+    const child1 = new Child({ name: 'child-1' });
+    const child2 = new Child({ name: 'child-2' });
+    // parent.children = { 'child-1': [child1], 'child-2': [child2] } as typeof parent.children;
+    parent.setChildren('child-1' as keyof typeof parent.children, [child1] as any);
+    parent.setChildren('child-2' as keyof typeof parent.children, [child2] as any);
     expect(parent.getChildren('child-1' as keyof typeof parent.children)).toEqual([child1]);
     expect(parent.getChildren('child-2' as keyof typeof parent.children)).toEqual([child2]);
   });
