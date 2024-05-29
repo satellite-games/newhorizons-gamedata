@@ -113,6 +113,34 @@ describe('regular dependencies', () => {
     expect(result).toBeInstanceOf(Array);
     expect(result).toHaveLength(1);
   });
+
+  test('should fail if the referenced child collection does not exist on the entity', () => {
+    const dependent = new Dependent({} as any);
+    dependent.dependencies = [
+      new Dependency({
+        dependencyName: 'non-existent.collection',
+        dependent: dependent.name,
+      }),
+    ];
+    const entity = new Entity({} as any);
+    const result = dependent.checkDependencies(entity);
+    expect(result).toBeInstanceOf(Array);
+    expect(result).toHaveLength(1);
+  });
+
+  test("should throw an error if the dependency references a value that doesn't exist", () => {
+    const dependent = new Dependent({} as any);
+    dependent.dependencies = [
+      new Dependency({
+        dependencyName: 'dependency.target',
+        dependent: dependent.name,
+        key: 'non-existent' as any,
+        value: 'foo',
+      }),
+    ];
+    const entity = new Entity({} as any);
+    expect(() => dependent.checkDependencies(entity)).toThrow();
+  });
 });
 
 describe('conflict dependencies', () => {
@@ -214,5 +242,33 @@ describe('conflict dependencies', () => {
     const result = conflict.checkDependencies(entity);
     expect(result).toBeInstanceOf(Array);
     expect(result).toHaveLength(1);
+  });
+
+  test('should pass if the referenced child collection does not exist on the entity', () => {
+    const conflict = new Conflict({} as any);
+    conflict.dependencies = [
+      new Dependency({
+        dependencyName: 'non-existent.collection',
+        dependent: conflict.name,
+        isConflict: true,
+      }),
+    ];
+    const entity = new Entity({} as any);
+    expect(conflict.checkDependencies(entity)).toBe(true);
+  });
+
+  test("should throw an error if the dependency references a value that doesn't exist", () => {
+    const conflict = new Conflict({} as any);
+    conflict.dependencies = [
+      new Dependency({
+        dependencyName: 'dependency.target',
+        dependent: conflict.name,
+        key: 'non-existent' as any,
+        value: 'foo',
+        isConflict: true,
+      }),
+    ];
+    const entity = new Entity({} as any);
+    expect(() => conflict.checkDependencies(entity)).toThrow();
   });
 });

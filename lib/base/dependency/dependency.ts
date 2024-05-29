@@ -32,10 +32,9 @@ export class Dependency<TDependency extends IGameObject | unknown> implements ID
   check(gameObject: IGameObject): boolean {
     const dependencyCollectionName = getCollectionName(this.dependencyName);
     const relevantChildren = gameObject.getChildren(dependencyCollectionName as keyof GameObjectRegistry);
+    const dependency = relevantChildren.find((child) => child.name === this.dependencyName);
     // For better readability, we create two branches for conflicts and regular dependencies
     if (this.isConflict) {
-      // If we cannot find any matching children, there is no conflict.
-      if (!relevantChildren) return true;
       const dependency = relevantChildren.find((child) => child.name === this.dependencyName);
       // If we cannot find the dependency, there is no conflict.
       if (!dependency) return true;
@@ -59,35 +58,27 @@ export class Dependency<TDependency extends IGameObject | unknown> implements ID
         return false;
       }
     } else {
-      // If we cannot find any matching children, the dependency is not met.
-      if (!relevantChildren) return false;
-      const dependency = relevantChildren.find((child) => child.name === this.dependencyName);
       // If we cannot find the dependency, the dependency is not met.
       if (!dependency) return false;
-    }
-    // If we cannot find any matching children, the dependency is not met.
-    if (!relevantChildren) return false;
-    const dependency = relevantChildren.find((child) => child.name === this.dependencyName);
-    // If we cannot find the dependency, the dependency is not met.
-    if (!dependency) return false;
-    // If we can find the dependency, we need to check whether we need to check a specific value.
-    if (this.key) {
-      const value = dependency[this.key as keyof typeof dependency];
-      if (typeof value === 'undefined') {
-        // If we look for a value that does not exist, we'll want to throw an error.
-        throw new Error(`The property "${String(this.key)}" does not exist on the dependency.`);
-      } else if (typeof value === 'number' && typeof this.value === 'number') {
-        // If we look for a number, the dependency check will depend on whether that number is greater
-        // than `this.value`, which we consider to be the minimum required value.
-        return value >= this.value;
+      // If we can find the dependency, we need to check whether we need to check a specific value.
+      if (this.key) {
+        const value = dependency[this.key as keyof typeof dependency];
+        if (typeof value === 'undefined') {
+          // If we look for a value that does not exist, we'll want to throw an error.
+          throw new Error(`The property "${String(this.key)}" does not exist on the dependency.`);
+        } else if (typeof value === 'number' && typeof this.value === 'number') {
+          // If we look for a number, the dependency check will depend on whether that number is greater
+          // than `this.value`, which we consider to be the minimum required value.
+          return value >= this.value;
+        } else {
+          // If we look for a value that is not a number, the dependency will depend on whether that value
+          // is equal to `this.value`.
+          return value === this.value;
+        }
       } else {
-        // If we look for a value that is not a number, the dependency will depend on whether that value
-        // is equal to `this.value`.
-        return value === this.value;
+        // If we don't need to check a specific value, the dependency is met.
+        return true;
       }
-    } else {
-      // If we don't need to check a specific value, the dependency is met.
-      return true;
     }
   }
 }
