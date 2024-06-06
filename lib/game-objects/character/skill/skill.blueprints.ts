@@ -2,14 +2,12 @@ import type { Blueprint } from '@/main';
 import type { CharacterSkill } from './skill.go';
 import type { Dependency } from '@/base/dependency/dependency';
 
-export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
+export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max'>[] = [
   {
     name: 'character.skill.energy-weapons',
     category: 'character.skill-category.combat',
     factor: 6,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -22,8 +20,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 6,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.strength',
@@ -36,8 +32,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 4,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.constitution',
@@ -50,8 +44,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 4,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.agility',
@@ -64,8 +56,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 6,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -78,8 +68,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 5,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.dexterity',
@@ -93,8 +81,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 6,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -108,8 +94,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.combat',
     factor: 4,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.dexterity',
@@ -123,8 +107,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -145,8 +127,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -159,8 +139,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -173,8 +151,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -187,8 +163,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.dexterity',
@@ -201,8 +175,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.dexterity',
@@ -229,8 +201,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -257,8 +227,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.dexterity',
@@ -280,8 +248,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.dexterity',
@@ -294,8 +260,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.dexterity',
@@ -322,8 +286,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -344,8 +306,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -372,8 +332,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -394,8 +352,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -416,8 +372,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.crafting',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -430,8 +384,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -444,8 +396,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -458,8 +408,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -472,8 +420,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -486,8 +432,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -500,8 +444,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -514,8 +456,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -528,8 +468,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -542,8 +480,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -556,8 +492,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -570,8 +504,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -584,8 +516,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -598,8 +528,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -612,8 +540,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -626,8 +552,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -640,8 +564,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.cleverness',
@@ -654,8 +576,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -668,8 +588,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.knowledge',
     factor: 3,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -682,8 +600,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.agility',
       'character.primary-attribute.constitution',
@@ -696,8 +612,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.agility',
@@ -710,8 +624,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.charisma',
@@ -724,8 +636,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.agility',
@@ -738,8 +648,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.constitution',
@@ -752,8 +660,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -766,8 +672,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.agility',
       'character.primary-attribute.agility',
@@ -780,8 +684,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.charisma',
@@ -794,8 +696,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -808,8 +708,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 1,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -822,8 +720,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.physical',
     factor: 5,
     constraintMultiplier: 2,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.agility',
       'character.primary-attribute.constitution',
@@ -836,8 +732,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -850,8 +744,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.charisma',
@@ -864,8 +756,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -878,8 +768,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.courage',
@@ -892,8 +780,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.intuition',
@@ -906,8 +792,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.charisma',
@@ -920,8 +804,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -934,8 +816,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.intuition',
       'character.primary-attribute.charisma',
@@ -948,8 +828,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -962,8 +840,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.social',
     factor: 4,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -976,8 +852,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.cleverness',
       'character.primary-attribute.intuition',
@@ -990,8 +864,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.intuition',
@@ -1004,8 +876,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',
@@ -1018,8 +888,6 @@ export const characterSkills: Blueprint<CharacterSkill, 'max'>[] = [
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
-    current: 0,
-    min: 0,
     primaryAttributes: [
       'character.primary-attribute.courage',
       'character.primary-attribute.cleverness',

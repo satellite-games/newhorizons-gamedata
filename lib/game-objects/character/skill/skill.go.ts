@@ -1,4 +1,4 @@
-import { Character, GameObject, constants, type CharacterPrimaryAttributeName } from '@/main';
+import { Character, GameObject, PrimaryAttribute, constants, type CharacterPrimaryAttributeName } from '@/main';
 import type { CharacterSkillName } from './skill.registry';
 import type { CharacterSkillCategoryName } from '../skill-category/skill-category.registry';
 
@@ -20,11 +20,11 @@ export class CharacterSkill extends GameObject {
   /**
    * The current level of the skill.
    */
-  declare current: number;
+  current: number = 0;
   /**
    * The minimum level of the skill.
    */
-  declare min: number;
+  min: number = 0;
   /**
    * The primary attributes that make up the skill check.
    */
@@ -53,7 +53,7 @@ export class CharacterSkill extends GameObject {
       throw new Error('The skill must have an owner of type Character to determine the max level.');
     }
     const character = owner as Character;
-    const primaryAttributes = character.getChildren('character.primary-attribute');
+    const primaryAttributes = character.getChildren<Character, PrimaryAttribute>('character.primary-attribute');
     const highestPrimaryAttribute = primaryAttributes.reduce((highest, attribute) => {
       return attribute.current > highest.current ? attribute : highest;
     });
@@ -62,6 +62,7 @@ export class CharacterSkill extends GameObject {
 
   serialize(): string {
     // When serializing the skill, the min level is set to the current level.
-    return super.serialize({ ...this, min: this.current });
+    const min = this.current;
+    return super.serialize({ ...this, min });
   }
 }
