@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from 'uuid';
-import type { Blueprint, IGameObject, Saved } from './types';
+import type { Blueprint, Saved } from './types';
 import type { ElementType, NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
 import type { Dependency } from '../dependency/dependency';
@@ -11,7 +11,7 @@ import { getCollectionName } from './game-object.utils';
  * A game object is an entity in the game world. It is a container for data and functions.
  * Game objects usually derive from a blueprint, which defines the schema of the game object.
  */
-export class GameObject implements IGameObject {
+export class GameObject implements GameObject {
   /**
    * The name of the game object's blueprint. This name is a unique key that identifies
    * the blueprint in the game database.
@@ -24,7 +24,7 @@ export class GameObject implements IGameObject {
   /**
    * What game object owns this game object. May be null.
    */
-  owner?: IGameObject | null;
+  owner?: GameObject | null;
   /**
    * Any modifiers that are currently affecting the game object.
    */
@@ -41,7 +41,7 @@ export class GameObject implements IGameObject {
   constructor(init: {
     name: string;
     id?: string;
-    owner?: IGameObject | null;
+    owner?: GameObject | null;
     modifiers?: Modifier<any>[];
     dependencies?: Dependency<any>[];
     children?: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
@@ -62,7 +62,7 @@ export class GameObject implements IGameObject {
   /**
    * Returns the owner of the game object or null if it has no owner.
    */
-  getOwner<TGameObject extends IGameObject>(): TGameObject | null {
+  getOwner<TGameObject extends GameObject>(): TGameObject | null {
     return this.owner as TGameObject | null;
   }
 
@@ -71,7 +71,7 @@ export class GameObject implements IGameObject {
    * @param name The game object name of the child to add.
    * @param newChild The new child to add.
    */
-  addToGameObject(newOwner: IGameObject): void {
+  addToGameObject(newOwner: GameObject): void {
     const collectionName = getCollectionName(this.name);
     newOwner.addChild(collectionName, this as any);
   }
@@ -81,7 +81,7 @@ export class GameObject implements IGameObject {
    * @param name The name of the children to return.
    */
   getChildren<
-    TGameObject extends IGameObject,
+    TGameObject extends GameObject,
     TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
     TKey = keyof TGameObject['children'],
   >(name: TKey): TChildren[] {
@@ -93,10 +93,10 @@ export class GameObject implements IGameObject {
    * @param children The children to set on the game object.
    */
   setChildren<
-    TGameObject extends IGameObject,
+    TGameObject extends GameObject,
     TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
   >(children: TChildren[]) {
-    const collectionName = getCollectionName((children[0] as IGameObject).name);
+    const collectionName = getCollectionName((children[0] as GameObject).name);
     const oldChildren = this.children[collectionName as GameObjectName];
     if (!oldChildren) {
       throw new Error(
@@ -106,7 +106,7 @@ export class GameObject implements IGameObject {
     if (!children || children.length === 0) {
       throw new Error('Cannot set an empty array of children on a game object.');
     }
-    for (const child of children) (child as IGameObject).owner = this;
+    for (const child of children) (child as GameObject).owner = this;
     this.children[collectionName] = children as unknown as typeof oldChildren;
   }
 
@@ -195,7 +195,7 @@ export class GameObject implements IGameObject {
  * @param constructor The constructor of the `GameObject` class that should be used for instantiation.
  * @returns The created game object.
  */
-export const createGameObject = <TGameObject extends IGameObject>(
+export const createGameObject = <TGameObject extends GameObject>(
   blueprintOrSaved: Blueprint<TGameObject> | Saved<TGameObject>,
   constructor: new (...args: any[]) => TGameObject,
 ): TGameObject => {

@@ -1,7 +1,7 @@
 import type { NonFunctionPropertyNames } from '@/types/private-types';
-import type { IGameObject } from '../game-object';
+import type { GameObject } from '../game-object';
 
-export interface IDependency<TDependency extends IGameObject | unknown> {
+export interface IDependency<TDependency extends GameObject | unknown> {
   /**
    * The dependent. Usually matches the id or name of the game object that comes
    * with the dependency.

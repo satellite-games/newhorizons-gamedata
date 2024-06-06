@@ -1,11 +1,11 @@
-import type { IGameObject } from '../game-object/types';
 import type { NonFunctionPropertyNames, NumericProperty } from '../../types/private-types';
+import type { GameObject } from '../game-object';
 /**
  * Modifiers are used to increase or decrease specific values of a game object.
  * They are commonly used to modify character stats like primary or secondary attributes
  * or item values like damage or accuracy
  */
-export class Modifier<TModifiedGameObject extends IGameObject | unknown> {
+export class Modifier<TModifiedGameObject extends GameObject | unknown> {
   /**
    * The cause of the modifier. Usually matches the name or id of the game object that is causing
    * the modification.
@@ -50,7 +50,7 @@ export class Modifier<TModifiedGameObject extends IGameObject | unknown> {
  * @param modifiers The modifiers to apply to the value.
  * @returns The modified value.
  */
-export const getModifiedValue = <TGameObject extends IGameObject>(
+export const getModifiedValue = <TGameObject extends GameObject>(
   gameObject: TGameObject,
   key: NumericProperty<TGameObject>,
   modifiers: Modifier<TGameObject>[],
