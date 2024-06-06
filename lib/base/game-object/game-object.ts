@@ -116,6 +116,38 @@ export class GameObject implements GameObject {
   }
 
   /**
+   * Removes a child from the game object.
+   * @param child The child to remove from the game object.
+   */
+  removeChild<
+    TGameObject extends GameObject,
+    TChild extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
+  >(child: TChild) {
+    const collectionName = getCollectionName((child as GameObject).name);
+    const children = this.getChildren<TGameObject, TChild>(collectionName);
+    const index = children.indexOf(child);
+    if (index === -1) {
+      throw new Error(`Child with ID '${(child as GameObject).id}' not found in collection '${collectionName}'.`);
+    }
+    children.splice(index, 1);
+    (child as GameObject).owner = null;
+    return children;
+  }
+
+  /**
+   * Finds a child by its unique identifier. This method searches all children of the game object.
+   * Returns null if the child is not found.
+   * @param id The unique identifier of the child to find.
+   */
+  findChildById(id: string): GameObject | null {
+    for (const collection of Object.values(this.children)) {
+      const child = collection.find((child) => (child as GameObject).id === id);
+      if (child) return child;
+    }
+    return null;
+  }
+
+  /**
    * Serializes the game object. This is useful for saving the game state to a file.
    * @param state The state of the game object to serialize. Defaults to the current state
    * (`this`) of the game object. A different state may be provided to apply changes to the
