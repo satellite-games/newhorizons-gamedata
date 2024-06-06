@@ -1,5 +1,4 @@
 import { GameObject } from '@/base/game-object/game-object';
-import { Character } from '@/character/character.go';
 import { CharacterGameEvent } from '@/events/event-types/character.event';
 import type { CharacterPrimaryAttributeName } from './primary-attribute.registry';
 
