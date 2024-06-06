@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { v4 as uuidv4 } from 'uuid';
 import type { Blueprint, IGameObject, Saved } from './types';
-import type { NumericProperty } from '@/types/private-types';
+import type { ElementType, NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
 import type { Dependency } from '../dependency/dependency';
 import type { GameObjectName, GameObjectRegistry } from '@/registry';
+import { getCollectionName } from './game-object.utils';
 
 /**
  * A game object is an entity in the game world. It is a container for data and functions.
@@ -16,7 +17,7 @@ export class GameObject implements IGameObject {
   owner?: IGameObject | null;
   modifiers?: Modifier<any>[];
   dependencies?: Dependency<any>[];
-  children?: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
+  children: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
 
   constructor(init: {
     name: string;
@@ -36,21 +37,56 @@ export class GameObject implements IGameObject {
     this.owner = init.owner ?? null;
     this.modifiers = init.modifiers;
     this.dependencies = init.dependencies;
-    this.children = init.children;
+    this.children = init.children ?? {};
   }
 
   getOwner<TGameObject extends IGameObject>(): TGameObject | null {
     return this.owner as TGameObject | null;
   }
 
-  getChildren<TKey extends GameObjectName>(name: TKey): GameObjectRegistry[TKey][] {
-    return (this.children?.[name] as GameObjectRegistry[TKey][]) ?? [];
+  // addToGameObject(newOwner: IGameObject): void {
+  //   const collectionName = getCollectionName(this.name);
+  //   newOwner.addChild(collectionName, this as any);
+  // }
+
+  /**
+   * Returns a specific type of children of the game object by the given name.
+   * @param name The name of the children to return.
+   */
+  getChildren<
+    TGameObject extends IGameObject,
+    TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
+    TKey = keyof TGameObject['children'],
+  >(name: TKey): TChildren[] {
+    return (this.children[name] as TChildren[]) ?? [];
   }
 
-  setChildren<TKey extends GameObjectName>(key: TKey, children: Array<GameObjectRegistry[TKey]>) {
-    if (!this.children) this.children = {};
-    this.children[key] = children;
+  setChildren<
+    TGameObject extends IGameObject,
+    TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
+  >(children: TChildren[]) {
+    const collectionName = getCollectionName((children[0] as IGameObject).name);
+    const oldChildren = this.children[collectionName as GameObjectName];
+    if (!oldChildren) {
+      throw new Error(
+        `Collection name '${collectionName}' is not a valid child collection for game object '${this.name}'.`,
+      );
+    }
+    if (!children || children.length === 0) {
+      throw new Error('Cannot set an empty array of children on a game object.');
+    }
+
+    this.children[collectionName] = children as unknown as typeof oldChildren;
+    for (const child of children) (child as IGameObject).owner = this;
   }
+
+  // addChild<TKey extends GameObjectName>(name: TKey, newChild: GameObjectRegistry[TKey]) {
+  //   if (!this.children) this.children = {};
+  //   const children = this.getChildren<TKey>(name);
+  //   children.push(newChild);
+  //   newChild.owner = this;
+  //   return children;
+  // }
 
   /**
    * Serializes the game object. This is useful for saving the game state to a file.
@@ -59,8 +95,11 @@ export class GameObject implements IGameObject {
    * game object before serialization.
    */
   serialize(state?: typeof this): string {
-    const object = state ? { ...state } : { ...this };
+    const object: Record<string, any> = state ? { ...state } : { ...this };
+    // Remove owner reference
     delete object.owner;
+    // Remove empty children objects
+    if (Object.keys(object.children).length === 0) delete object.children;
     return JSON.stringify(object);
   }
 

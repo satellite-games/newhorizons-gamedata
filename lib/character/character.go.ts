@@ -1,5 +1,5 @@
 import { GameObject } from '@/base/game-object';
-import type { Saved } from '@/base/game-object/types';
+import type { GameObjectInit } from '@/base/game-object/types';
 import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { SecondaryAttribute, type CharacterSecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
@@ -58,7 +58,7 @@ export class Character extends GameObject {
     // 'character.status-effect': [],
   };
 
-  constructor(init?: Partial<Saved<Character>>) {
+  constructor(init?: GameObjectInit<Character>) {
     super({ name: 'character', ...init });
   }
 

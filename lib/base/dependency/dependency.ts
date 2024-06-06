@@ -1,6 +1,5 @@
 import type { NonFunctionPropertyNames } from '@/types/private-types';
-import type { IGameObject } from '../game-object/types';
-import { getCollectionName, type GameObjectRegistry } from '@/main';
+import { GameObject, getCollectionName } from '@/main';
 import type { IDependency } from './types';
 
 /**
@@ -8,7 +7,7 @@ import type { IDependency } from './types';
  * these dependencies are required for the game object to function properly or to
  * be accessible at all.
  */
-export class Dependency<TDependency extends IGameObject | unknown> implements IDependency<TDependency> {
+export class Dependency<TDependency extends GameObject | unknown> implements IDependency<TDependency> {
   declare dependent: string;
   declare dependencyName: string;
   declare key?: keyof Omit<Pick<TDependency, NonFunctionPropertyNames<TDependency>>, 'id' | 'name'>;
@@ -29,9 +28,9 @@ export class Dependency<TDependency extends IGameObject | unknown> implements ID
    *
    * @param gameObject The game object that the dependency is being checked against.
    */
-  check(gameObject: IGameObject): boolean {
+  check(gameObject: GameObject): boolean {
     const dependencyCollectionName = getCollectionName(this.dependencyName);
-    const relevantChildren = gameObject.getChildren(dependencyCollectionName as keyof GameObjectRegistry);
+    const relevantChildren = gameObject.getChildren(dependencyCollectionName) as GameObject[];
     const dependency = relevantChildren.find((child) => child.name === this.dependencyName);
     // For better readability, we create two branches for conflicts and regular dependencies
     if (this.isConflict) {

@@ -13,12 +13,11 @@ export const createNewCharacter = (name?: string): Character => {
   // Set name
   character.general.name = name || 'Anonymous';
   // Add primary and secondary attributes
-  character.setChildren(
-    'character.primary-attribute',
+  character.setChildren<Character, PrimaryAttribute>(
+    // 'character.primary-attribute',
     primaryAttributes.map((blueprint) => new PrimaryAttribute({ ...blueprint, owner: character })),
   );
-  character.setChildren(
-    'character.secondary-attribute',
+  character.setChildren<Character, SecondaryAttribute>(
     secondaryAttributes.map((blueprint) => new SecondaryAttribute({ ...blueprint, owner: character })),
   );
   return character;

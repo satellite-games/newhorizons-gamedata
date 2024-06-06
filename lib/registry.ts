@@ -30,9 +30,10 @@ export type GameObjectName = keyof GameObjectRegistry;
 /**
  * The registry of all blueprint collections.
  */
-export const blueprints: Partial<{
+export const blueprints: {
   [K in GameObjectName]: Blueprint<GameObjectRegistry[K]>[];
-}> = {
+} = {
+  character: [],
   'character.origin': characterOrigins,
   'character.preset': characterPresets,
   'character.primary-attribute': primaryAttributes,

@@ -3,12 +3,13 @@ import { SecondaryAttribute } from '../secondary-attribute/secondary-attribute.g
 import { createNewCharacter } from '@/character/create-character';
 import type { Character } from '@/character/character.go';
 import { Modifier } from '@/base/modifier';
+import { PrimaryAttribute } from '../primary-attribute';
 
 let character: Character;
 
 beforeEach(() => {
   character = createNewCharacter();
-  for (const primaryAttribute of character.getChildren('character.primary-attribute')) {
+  for (const primaryAttribute of character.getChildren<Character, PrimaryAttribute>('character.primary-attribute')) {
     primaryAttribute.current = 10;
   }
 });

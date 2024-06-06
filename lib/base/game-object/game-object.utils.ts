@@ -1,3 +1,5 @@
+import type { GameObjectName } from '@/registry';
+
 /**
  * Takes a game object's or blueprint's name and returns the path
  * to the corresponding wiki article.
@@ -27,13 +29,13 @@ export function getWikiPath(name: string): { book: string; chapter: string; arti
  * @param gameObjectName The name of the game object or blueprint.
  * @returns The collection name.
  */
-export function getCollectionName(name: string) {
+export function getCollectionName(name: string): GameObjectName {
   const parts = name.split('.');
   let result = '';
-  if (parts.length === 1) return parts[0];
+  if (parts.length === 1) return parts[0] as GameObjectName;
   for (let i = 0; i < parts.length - 1; i++) {
     result += parts[i];
     if (i < parts.length - 2) result += '.';
   }
-  return result;
+  return result as GameObjectName;
 }

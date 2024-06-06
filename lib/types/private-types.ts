@@ -18,3 +18,5 @@ export type NonNumberPropertyNames<T> = {
  * A numeric property of an object can potentially be modified by a modifier.
  */
 export type NumericProperty<TObject = object> = keyof Omit<TObject, NonNumberPropertyNames<TObject>>;
+
+export type ElementType<TArray> = TArray extends Array<infer Element> ? Element : never;
