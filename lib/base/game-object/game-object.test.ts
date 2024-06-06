@@ -4,7 +4,8 @@ import { GameObject } from '../game-object/game-object';
 import type { Blueprint, GameObjectInit } from './types';
 // Game objects are difficult to it with completely generic objects due to type-safety, so
 // we import some actual game objects to it with
-import { PrimaryAttribute, SecondaryAttribute } from '@/main';
+import { Modifier, PrimaryAttribute, SecondaryAttribute } from '@/main';
+import { Dependency } from '../dependency';
 
 /**
  * A simple train with a property, getter and a function.
@@ -235,5 +236,55 @@ describe('serialize', () => {
     const withoutChildren = new WithoutChildren({ name: 'without-children', id: '5678' });
     expect(withChildren.serialize()).toBe('{"name":"with-children","id":"1234","children":{"trains":[]}}');
     expect(withoutChildren.serialize()).toBe('{"name":"without-children","id":"5678"}');
+  });
+
+  it('should be able a deep object with circular references', () => {
+    class Child extends GameObject {}
+    class Parent extends GameObject {
+      children: Record<string, Child[]> = {
+        child: [],
+      };
+      modifiers = [
+        new Modifier<PrimaryAttribute>({
+          cause: 'modifier',
+          modifiedName: 'character.primary-attribute.courage',
+          modifiedKeys: ['current'],
+          amount: 1,
+        }),
+      ];
+      dependencies = [
+        new Dependency<PrimaryAttribute>({
+          dependencyName: 'dependency',
+          dependent: 'character.primary-attribute.courage',
+        }),
+      ];
+    }
+    const parent = new Parent({ name: 'parent', id: '1' });
+    parent.addChild<Parent, Child>(new Child({ name: 'child', id: '2' }));
+    // To make the assertion more readable we serialize and then perform a
+    // flat parse. We don't perform an actual deserialization since it does
+    // a bunch of stuff we're not interested in.
+    const serialized = parent.serialize();
+    expect(JSON.parse(serialized)).toEqual({
+      name: 'parent',
+      id: '1',
+      children: {
+        child: ['{"name":"child","id":"2"}'],
+      },
+      dependencies: [
+        {
+          dependent: 'character.primary-attribute.courage',
+          dependencyName: 'dependency',
+        },
+      ],
+      modifiers: [
+        {
+          cause: 'modifier',
+          modifiedKeys: ['current'],
+          modifiedName: 'character.primary-attribute.courage',
+          amount: 1,
+        },
+      ],
+    });
   });
 });

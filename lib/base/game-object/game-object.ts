@@ -154,12 +154,22 @@ export class GameObject implements GameObject {
    * game object before serialization.
    */
   serialize(state?: typeof this): string {
-    const object: Record<string, any> = state ? { ...state } : { ...this };
+    const object: typeof this = state ? { ...state } : { ...this };
+    const preSerializedObject: Record<string, any> = { ...object };
     // Remove owner reference
-    delete object.owner;
-    // Remove empty children objects
-    if (Object.keys(object.children).length === 0) delete object.children;
-    return JSON.stringify(object);
+    delete preSerializedObject.owner;
+    if (Object.keys(object.children).length === 0) {
+      // Remove empty children objects
+      delete preSerializedObject.children;
+    } else {
+      // Or serialize children
+      for (const key in object.children) {
+        const children = object.children[key as any as keyof typeof object.children];
+        if (!children) continue;
+        preSerializedObject.children[key] = children.map((child) => child.serialize());
+      }
+    }
+    return JSON.stringify(preSerializedObject);
   }
 
   /**
