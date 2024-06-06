@@ -59,28 +59,15 @@ describe('getOwner', () => {
     class Child extends GameObject {}
     const parent = new Parent({ name: 'parent' });
     const child = new Child({ name: 'child', owner: parent });
-    expect(child.owner).toBe(parent);
     expect(child.getOwner<Parent>()).toBe(parent);
   });
 
   test("should return null if the game object doesn't have an owner", () => {
     class Child extends GameObject {}
     const child = new Child({ name: 'child' });
-    expect(child.owner).toBe(null);
     expect(child.getOwner()).toBe(null);
   });
 });
-
-// describe('addToGameObject', () => {
-//   test("should add the game object to another game object's children", () => {
-//     class Parent extends GameObject {}
-//     class Child extends GameObject {}
-//     const parent = new Parent({ name: 'parent' });
-//     const child = new Child({ name: 'child' });
-//     child.addToGameObject(parent);
-//     expect(parent.getChildren('child' as keyof typeof parent.children)).toEqual([child]);
-//   });
-// });
 
 describe('getChildren', () => {
   test('should return the children of the game object by the given name', () => {

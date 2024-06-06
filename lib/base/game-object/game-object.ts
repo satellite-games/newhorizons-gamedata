@@ -24,11 +24,11 @@ export class GameObject implements GameObject {
   /**
    * What game object owns this game object. May be null.
    */
-  owner?: GameObject | null;
+  protected owner?: GameObject | null;
   /**
    * Any modifiers that are currently affecting the game object.
    */
-  modifiers?: Modifier<any>[];
+  protected modifiers?: Modifier<any>[];
   /**
    * Any dependencies that the game object has.
    */
@@ -67,16 +67,6 @@ export class GameObject implements GameObject {
   }
 
   /**
-   * Adds a new child to the game object. If the children do not exist yet, they will be created.
-   * @param name The game object name of the child to add.
-   * @param newChild The new child to add.
-   */
-  addToGameObject(newOwner: GameObject): void {
-    const collectionName = getCollectionName(this.name);
-    newOwner.addChild(collectionName, this as any);
-  }
-
-  /**
    * Returns a specific type of children of the game object by the given name.
    * @param name The name of the children to return.
    */
@@ -110,13 +100,20 @@ export class GameObject implements GameObject {
     this.children[collectionName] = children as unknown as typeof oldChildren;
   }
 
-  // addChild<TKey extends GameObjectName>(name: TKey, newChild: GameObjectRegistry[TKey]) {
-  //   if (!this.children) this.children = {};
-  //   const children = this.getChildren<TKey>(name);
-  //   children.push(newChild);
-  //   newChild.owner = this;
-  //   return children;
-  // }
+  /**
+   * Adds a child to the game object.
+   * @param child The child to add to the game object.
+   */
+  addChild<
+    TGameObject extends GameObject,
+    TChild extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
+  >(child: TChild) {
+    const collectionName = getCollectionName((child as GameObject).name);
+    const children = this.getChildren<TGameObject, TChild>(collectionName);
+    children.push(child);
+    (child as GameObject).owner = this;
+    return children;
+  }
 
   /**
    * Serializes the game object. This is useful for saving the game state to a file.
