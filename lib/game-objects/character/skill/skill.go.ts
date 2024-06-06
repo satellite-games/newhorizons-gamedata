@@ -48,11 +48,7 @@ export class CharacterSkill extends GameObject {
    * level times `SKILL_MAX_LEVEL_MULTIPLIER`.
    */
   get max(): number {
-    const { owner } = this;
-    if (!owner && !((owner as unknown) instanceof Character)) {
-      throw new Error('The skill must have an owner of type Character to determine the max level.');
-    }
-    const character = owner as Character;
+    const character = getOwnerCharacter(this);
     const primaryAttributes = character.getChildren<Character, PrimaryAttribute>('character.primary-attribute');
     const highestPrimaryAttribute = primaryAttributes.reduce((highest, attribute) => {
       return attribute.current > highest.current ? attribute : highest;

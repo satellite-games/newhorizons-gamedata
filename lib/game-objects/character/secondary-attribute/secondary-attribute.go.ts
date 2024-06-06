@@ -2,6 +2,7 @@ import { GameObject } from '@/base/game-object/game-object';
 import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { type Character } from '@/character/character.go';
 import type { CharacterSecondaryAttributeName } from './secondary-attribute.registry';
+import { getOwnerCharacter } from '@/character';
 
 interface SecondaryAttributeFormula {
   /**
@@ -30,10 +31,7 @@ export class SecondaryAttribute extends GameObject {
    * The current total value of the secondary attribute.
    */
   get total(): number {
-    const character = this.getOwner<Character>();
-    if (!character) {
-      throw new Error(`Cannot get ${this.constructor.name}.total without a character reference.`);
-    }
+    const character = getOwnerCharacter(this);
     const primaryAttributes = this.getPrimaryAttributes(character);
     const primaryAttributeValues = primaryAttributes.map((primaryAttribute) =>
       primaryAttribute.getModifiedValue<PrimaryAttribute>(
@@ -44,11 +42,11 @@ export class SecondaryAttribute extends GameObject {
     return Math.round(primaryAttributeValues.reduce((sum, value) => sum + value, 0) / this.formula.divisor);
   }
 
+  /**
+   * The remaining value of the secondary attribute.
+   */
   get remaining(): number {
-    const character = this.getOwner<Character>();
-    if (!character) {
-      throw new Error(`Cannot get ${this.constructor.name}.total without a character reference.`);
-    }
+    const character = getOwnerCharacter(this);
     const total = this.getModifiedValue<SecondaryAttribute>('total', character.getModifiers<SecondaryAttribute>());
     return total - this.difference;
   }
