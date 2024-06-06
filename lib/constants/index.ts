@@ -3,6 +3,10 @@
  */
 export const constants = {
   /**
+   * The default name for all characters.
+   */
+  CHARACTER_DEFAULT_NAME: 'Anonymous',
+  /**
    * The maximum level of each skill is determined by the highest primary attribute
    * that is part of the skill check. The maximum level is that attribute's level times
    * this value.

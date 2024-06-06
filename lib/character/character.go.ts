@@ -1,9 +1,18 @@
 import { GameObject } from '@/base/game-object';
 import type { GameObjectInit } from '@/base/game-object/types';
-import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
-import { SecondaryAttribute, type CharacterSecondaryAttributeName } from '@/game-objects/character/secondary-attribute';
+import {
+  primaryAttributes,
+  PrimaryAttribute,
+  type CharacterPrimaryAttributeName,
+} from '@/game-objects/character/primary-attribute';
+import {
+  secondaryAttributes,
+  SecondaryAttribute,
+  type CharacterSecondaryAttributeName,
+} from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
 import type { CharacterSkill } from '@/game-objects/character/skill';
+import { constants } from '@/constants';
 
 export class Character extends GameObject {
   /**
@@ -60,6 +69,27 @@ export class Character extends GameObject {
 
   constructor(init?: GameObjectInit<Character>) {
     super({ name: 'character', ...init });
+  }
+
+  /**
+   * Initializes a new character. This method should be called at the beginning of the character
+   * creation process. It should be followed up by applying a `CharacterOrigin` to the character.
+   * @param name The name of the character. Defaults to `constants.CHARACTER_DEFAULT_NAME`.
+   * @returns The newly initialized character.
+   */
+  static initialize(name?: string) {
+    const character = new Character();
+    // Set name
+    character.general.name = name ?? constants.CHARACTER_DEFAULT_NAME;
+    // Add primary and secondary attributes
+    character.setChildren<Character, PrimaryAttribute>(
+      // 'character.primary-attribute',
+      primaryAttributes.map((blueprint) => new PrimaryAttribute({ ...blueprint, owner: character })),
+    );
+    character.setChildren<Character, SecondaryAttribute>(
+      secondaryAttributes.map((blueprint) => new SecondaryAttribute({ ...blueprint, owner: character })),
+    );
+    return character;
   }
 
   /**

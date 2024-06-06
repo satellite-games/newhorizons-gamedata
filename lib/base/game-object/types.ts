@@ -26,7 +26,7 @@ export type Blueprint<TGameObject extends GameObject, TOmitted extends keyof TGa
  * Further properties can be omitted.
  */
 export type Saved<TGameObject extends GameObject, TOmitted extends keyof TGameObject = never> = Omit<
-  GameObjectInit<TGameObject, 'owner' | TOmitted>,
-  'id' | 'children'
+  GameObjectInit<TGameObject, TOmitted>,
+  'id' | 'owner' | 'children'
 > &
   Required<Pick<TGameObject, 'id'>>;

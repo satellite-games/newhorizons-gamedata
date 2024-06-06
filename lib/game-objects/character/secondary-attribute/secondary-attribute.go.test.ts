@@ -1,21 +1,24 @@
-import { describe, expect, test, beforeEach } from 'vitest';
-import { SecondaryAttribute } from '../secondary-attribute/secondary-attribute.go';
-import { createNewCharacter } from '@/character/create-character';
-import type { Character } from '@/character/character.go';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { Character } from '@/character/character.go';
 import { Modifier } from '@/base/modifier';
+import { SecondaryAttribute } from './secondary-attribute.go';
 import { PrimaryAttribute } from '../primary-attribute';
 
 let character: Character;
 
 beforeEach(() => {
-  character = createNewCharacter();
+  character = Character.initialize();
   for (const primaryAttribute of character.getChildren<Character, PrimaryAttribute>('character.primary-attribute')) {
     primaryAttribute.current = 10;
   }
 });
 
+it('should foo', () => {
+  expect(1).toBe(1);
+});
+
 describe('total', () => {
-  test('should get the correct total value of the secondary attribute', () => {
+  it('should get the correct total value of the secondary attribute', () => {
     const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
     expect(healthPoints.total).toBe(20);
     const staminaPoints = character.getSecondaryAttribute('character.secondary-attribute.stamina-points');
@@ -32,13 +35,13 @@ describe('total', () => {
     expect(criticalHitThreshold.total).toBe(5);
   });
 
-  test('should get the correct remaining value of the secondary attribute', () => {
+  it('should get the correct remaining value of the secondary attribute', () => {
     const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
     healthPoints.difference = 5;
     expect(healthPoints.getModifiedValue<SecondaryAttribute>('remaining', [])).toBe(15);
   });
 
-  test('should get the correct total and remaining value of the secondary attribute when it is modified', () => {
+  it('should get the correct total and remaining value of the secondary attribute when it is modified', () => {
     const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
     healthPoints.difference = 5;
     const modifier = new Modifier<SecondaryAttribute>({

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { characterSkillMocks } from './skill.blueprint-mocks';
 import { CharacterSkill } from './skill.go';
-import { createNewCharacter, type Character } from '@/character';
+import { Character } from '@/character';
 import { constants } from '@/constants';
 import { GameObject } from '@/main';
 
@@ -33,7 +33,7 @@ describe('max', () => {
   let character: Character;
 
   beforeEach(() => {
-    character = createNewCharacter('Steve');
+    character = Character.initialize('Steve');
   });
 
   it('should return the correct max level of the skill', () => {

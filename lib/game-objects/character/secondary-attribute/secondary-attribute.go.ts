@@ -1,6 +1,6 @@
 import { GameObject } from '@/base/game-object/game-object';
 import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
-import { Character } from '@/character/character.go';
+import { type Character } from '@/character/character.go';
 import type { CharacterSecondaryAttributeName } from './secondary-attribute.registry';
 
 interface SecondaryAttributeFormula {

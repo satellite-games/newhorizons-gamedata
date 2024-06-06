@@ -1,7 +1,10 @@
-import { expect, test } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { Character } from '.';
+import { constants } from '@/constants';
 
-test('should initialize properly', () => {
-  const character = new Character();
-  expect(character.id).toBeDefined();
+describe('initialize', () => {
+  it('should initialize with default name', async () => {
+    const character = Character.initialize();
+    expect(character.general.name).toBe(constants.CHARACTER_DEFAULT_NAME);
+  });
 });

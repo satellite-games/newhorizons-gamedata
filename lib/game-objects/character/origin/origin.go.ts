@@ -1,6 +1,7 @@
 import { GameObject } from '@/base/game-object';
 import type { CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import type { CharacterOriginName } from './origin.registry';
+import type { Character } from '@/character';
 
 /**
  * The character origin defines the cultural background of a character. It usually matches the
@@ -28,4 +29,13 @@ export class CharacterOrigin extends GameObject {
    * the player to choose which skills they want to receive a bonus for.
    */
   declare selectableSkillBonuses: { value: number; skills: string[] }[];
+
+  /**
+   * Applies the origin to the character. This method should be called during character creation
+   * to apply the origin's bonuses. It should be called after the character has been initialized.
+   * @param character The character the origin should be applied to.
+   */
+  apply(character: Character): void {
+    character.general.originName = this.name;
+  }
 }
