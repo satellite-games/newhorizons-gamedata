@@ -1,14 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+import { GameObject } from '@/main';
+import { Character } from '@/character';
 import { characterSkillMocks } from './skill.blueprint-mocks';
 import { CharacterSkill } from './skill.go';
-import { Character } from '@/character';
 import { constants } from '@/constants';
-import { GameObject } from '@/main';
 
 describe('constructor', () => {
   it('should properly construct from blueprint', () => {
-    const blueprint = characterSkillMocks.coreSkill;
-    const skill = new CharacterSkill(blueprint);
+    const skill = new CharacterSkill(characterSkillMocks.coreSkill);
     expect(skill.min).toBe(0);
     expect(skill.current).toBe(0);
   });
@@ -17,8 +16,7 @@ describe('constructor', () => {
 describe('serialize', () => {
   let skill: CharacterSkill;
   beforeEach(() => {
-    const blueprint = characterSkillMocks.coreSkill;
-    skill = new CharacterSkill(blueprint);
+    skill = new CharacterSkill(characterSkillMocks.coreSkill);
   });
 
   it('should set the min value before serialization', () => {
@@ -48,8 +46,7 @@ describe('max', () => {
   });
 
   it("should throw an error if the skill doesn't have a character owner", () => {
-    const blueprint = characterSkillMocks.coreSkill;
-    const skill = new CharacterSkill(blueprint);
+    const skill = new CharacterSkill(characterSkillMocks.coreSkill);
     // Should throw because the skill has no owner
     expect(() => skill.max).toThrow();
     class NonCharacterOwner extends GameObject {}
@@ -57,5 +54,16 @@ describe('max', () => {
     nonCharacterOwner.addChild<NonCharacterOwner, CharacterSkill>(skill);
     // Should throw because the owner is not a character
     expect(() => skill.max).toThrow();
+  });
+});
+
+describe('add and remove', () => {
+  it('should add the skill to the character and remove it', () => {
+    const character = new Character();
+    const skill = new CharacterSkill(characterSkillMocks.coreSkill);
+    character.addChild<Character, CharacterSkill>(skill);
+    expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([skill]);
+    skill.removeFromCharacter(character);
+    expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([]);
   });
 });

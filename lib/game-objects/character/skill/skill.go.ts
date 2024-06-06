@@ -1,4 +1,11 @@
-import { Character, GameObject, PrimaryAttribute, constants, type CharacterPrimaryAttributeName } from '@/main';
+import {
+  Character,
+  GameObject,
+  PrimaryAttribute,
+  constants,
+  getOwnerCharacter,
+  type CharacterPrimaryAttributeName,
+} from '@/main';
 import type { CharacterSkillName } from './skill.registry';
 import type { CharacterSkillCategoryName } from '../skill-category/skill-category.registry';
 
@@ -60,5 +67,13 @@ export class CharacterSkill extends GameObject {
     // When serializing the skill, the min level is set to the current level.
     const min = this.current;
     return super.serialize({ ...this, min });
+  }
+
+  addToCharacter(character: Character): void {
+    character.addChild<Character, CharacterSkill>(this);
+  }
+
+  removeFromCharacter(character: Character): void {
+    character.removeChild<Character, CharacterSkill>(this);
   }
 }

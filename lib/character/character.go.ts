@@ -11,7 +11,7 @@ import {
   type CharacterSecondaryAttributeName,
 } from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
-import type { CharacterSkill } from '@/game-objects/character/skill';
+import { characterSkills, CharacterSkill } from '@/game-objects/character/skill';
 import { constants } from '@/constants';
 
 export class Character extends GameObject {
@@ -89,6 +89,12 @@ export class Character extends GameObject {
     character.setChildren<Character, SecondaryAttribute>(
       secondaryAttributes.map((blueprint) => new SecondaryAttribute({ ...blueprint, owner: character })),
     );
+    // Add core skills
+    const coreSkills = characterSkills.filter((skill) => skill.isCoreSkill);
+    character.setChildren<Character, CharacterSkill>(
+      coreSkills.map((blueprint) => new CharacterSkill({ ...blueprint, owner: character })),
+    );
+
     return character;
   }
 
