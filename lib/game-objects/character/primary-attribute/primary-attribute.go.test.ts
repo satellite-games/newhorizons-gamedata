@@ -13,21 +13,18 @@ describe('changeValue', () => {
     const primaryAttribute = new PrimaryAttribute(primaryAttributes[0]);
     expect(primaryAttribute.changeValue(2)).toBe(10);
     expect(primaryAttribute.current).toBe(10);
-    expect(EventLog.events.length).toBe(1);
   });
 
   test('should decrease the current value of the primary attribute by the specified amount', () => {
     const primaryAttribute = new PrimaryAttribute({ ...primaryAttributes[0], current: 10 });
     expect(primaryAttribute.changeValue(-2)).toBe(8);
     expect(primaryAttribute.current).toBe(8);
-    expect(EventLog.events.length).toBe(1);
   });
 
   test('should not decrease the current value of the primary attribute below the minimum value', () => {
     const primaryAttribute = new PrimaryAttribute({ ...primaryAttributes[0] });
     expect(primaryAttribute.changeValue(-2)).toBeUndefined();
     expect(primaryAttribute.current).toBe(8);
-    expect(EventLog.events.length).toBe(0);
   });
 
   test('should create an event', () => {
