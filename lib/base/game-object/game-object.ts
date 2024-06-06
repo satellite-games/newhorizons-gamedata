@@ -75,9 +75,8 @@ export class GameObject implements IGameObject {
     if (!children || children.length === 0) {
       throw new Error('Cannot set an empty array of children on a game object.');
     }
-
-    this.children[collectionName] = children as unknown as typeof oldChildren;
     for (const child of children) (child as IGameObject).owner = this;
+    this.children[collectionName] = children as unknown as typeof oldChildren;
   }
 
   // addChild<TKey extends GameObjectName>(name: TKey, newChild: GameObjectRegistry[TKey]) {

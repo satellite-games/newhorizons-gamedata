@@ -27,17 +27,17 @@ export class PrimaryAttribute extends GameObject {
    * If the new value is within the minimum and maximum values, the operation will succeed and
    * the new value is returned. Otherwise, the value will not change and nothing will be returned.
    * @param amount The amount to change the value by.
-   * @param character The character that the primary attribute belongs to.
    */
-  changeValue(amount: number, character: Character): number | void {
+  changeValue(amount: number): number | void {
     const oldValue = this.current;
     const newValue = this.current + amount;
     if (newValue >= this.min && newValue <= this.max) {
       this.current = newValue;
-      new CharacterGameEvent({
-        characterId: character.id,
-        message: `Primary attribute value changed from ${oldValue} to ${newValue}.`,
-      });
+      if (this.owner)
+        new CharacterGameEvent({
+          characterId: this.owner.id,
+          message: `Primary attribute value changed from ${oldValue} to ${newValue}.`,
+        });
       return this.current;
     }
   }
