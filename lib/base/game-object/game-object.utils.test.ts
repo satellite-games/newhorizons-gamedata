@@ -1,5 +1,5 @@
-import { characterOrigins } from '@/main';
 import { describe, expect, it } from 'vitest';
+import { characterOrigins } from '@/main';
 import { getCollectionName, getWikiPath } from './game-object.utils';
 
 describe('getWikiPath', () => {
