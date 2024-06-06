@@ -12,11 +12,30 @@ import { getCollectionName } from './game-object.utils';
  * Game objects usually derive from a blueprint, which defines the schema of the game object.
  */
 export class GameObject implements IGameObject {
+  /**
+   * The name of the game object's blueprint. This name is a unique key that identifies
+   * the blueprint in the game database.
+   */
   name: string;
+  /**
+   * The unique identifier of the game object.
+   */
   id: string;
+  /**
+   * What game object owns this game object. May be null.
+   */
   owner?: IGameObject | null;
+  /**
+   * Any modifiers that are currently affecting the game object.
+   */
   modifiers?: Modifier<any>[];
+  /**
+   * Any dependencies that the game object has.
+   */
   dependencies?: Dependency<any>[];
+  /**
+   * Any child game objects that are stored on this game object.
+   */
   children: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
 
   constructor(init: {
@@ -40,14 +59,22 @@ export class GameObject implements IGameObject {
     this.children = init.children ?? {};
   }
 
+  /**
+   * Returns the owner of the game object or null if it has no owner.
+   */
   getOwner<TGameObject extends IGameObject>(): TGameObject | null {
     return this.owner as TGameObject | null;
   }
 
-  // addToGameObject(newOwner: IGameObject): void {
-  //   const collectionName = getCollectionName(this.name);
-  //   newOwner.addChild(collectionName, this as any);
-  // }
+  /**
+   * Adds a new child to the game object. If the children do not exist yet, they will be created.
+   * @param name The game object name of the child to add.
+   * @param newChild The new child to add.
+   */
+  addToGameObject(newOwner: IGameObject): void {
+    const collectionName = getCollectionName(this.name);
+    newOwner.addChild(collectionName, this as any);
+  }
 
   /**
    * Returns a specific type of children of the game object by the given name.
@@ -61,6 +88,10 @@ export class GameObject implements IGameObject {
     return (this.children[name] as TChildren[]) ?? [];
   }
 
+  /**
+   * Sets a specific type of children on the game object.
+   * @param children The children to set on the game object.
+   */
   setChildren<
     TGameObject extends IGameObject,
     TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
