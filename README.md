@@ -43,7 +43,7 @@ The [`GameObject`](/lib/base/game-object/game-object.ts) class is the most impor
 
 In the game, `GameObject` is usually used through inheritance. The game includes a multitude of different types of `GameObject`. Those sub-classes can be found in `/lib/game-objects/` and are further categorized in different game object categories (and stored in corresponding folders):
 
-`/lib/game-objects/character` contains Game Objects related to the [`Character`](/lib/character/character.go.ts) Game Object. `Character`s are entities that represent (mostly) player or (rarely) non-player characters in the game. They include, but are not limited to, a character's attributes, skills or traits.
+- `/lib/game-objects/character` contains Game Objects related to the [`Character`](/lib/character/character.go.ts) Game Object. `Character`s are entities that represent (mostly) player or (rarely) non-player characters in the game. They include, but are not limited to, a character's attributes, skills or traits.
 
 The [`Blueprint`](/lib/base//game-object/types.ts) type represents a template for Game Object instantiation. Blueprints come in collections of varying sizes and make up the biggest part of the game's master data.
 
