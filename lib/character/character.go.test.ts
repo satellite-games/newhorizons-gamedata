@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, expect, it } from 'vitest';
 import { Character } from '.';
 import { constants } from '@/constants';
@@ -11,5 +12,31 @@ describe('initialize', () => {
     expect(character.getChildren<Character, PrimaryAttribute>('character.primary-attribute').length).toBe(8);
     expect(character.getChildren<Character, SecondaryAttribute>('character.secondary-attribute').length).toBe(6);
     expect(character.getChildren<Character, CharacterSkill>('character.skill').length).toBe(26);
+  });
+});
+
+describe('getPrimaryAttribute', () => {
+  it('should return primary attribute by name', async () => {
+    const character = Character.initialize();
+    const primaryAttribute = character.getPrimaryAttribute('character.primary-attribute.cleverness');
+    expect(primaryAttribute.name).toBe('character.primary-attribute.cleverness');
+  });
+
+  it('should throw error if primary attribute not found', async () => {
+    const character = Character.initialize();
+    expect(() => character.getPrimaryAttribute('character.primary-attribute.unknown' as any)).toThrow();
+  });
+});
+
+describe('getSecondaryAttribute', () => {
+  it('should return secondary attribute by name', async () => {
+    const character = Character.initialize();
+    const secondaryAttribute = character.getSecondaryAttribute('character.secondary-attribute.health-points');
+    expect(secondaryAttribute.name).toBe('character.secondary-attribute.health-points');
+  });
+
+  it('should throw error if secondary attribute not found', async () => {
+    const character = Character.initialize();
+    expect(() => character.getSecondaryAttribute('character.secondary-attribute.unknown' as any)).toThrow();
   });
 });

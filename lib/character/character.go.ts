@@ -11,7 +11,7 @@ import {
   type CharacterSecondaryAttributeName,
 } from '@/game-objects/character/secondary-attribute';
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
-import { characterSkills, CharacterSkill } from '@/game-objects/character/skill';
+import { characterSkills, CharacterSkill, type CharacterSkillName } from '@/game-objects/character/skill';
 import { constants } from '@/constants';
 
 export class Character extends GameObject {
@@ -110,9 +110,14 @@ export class Character extends GameObject {
    * @param name The name of the primary attribute.
    */
   getPrimaryAttribute(name: CharacterPrimaryAttributeName): PrimaryAttribute {
-    return this.getChildren('character.primary-attribute').find(
+    const primaryAttribute = this.getChildren('character.primary-attribute').find(
       (primaryAttribute) => primaryAttribute.name === name,
-    ) as PrimaryAttribute;
+    ) as PrimaryAttribute | undefined;
+    // Since primary attributes are required, we throw an error if the primary attribute is not found.
+    if (!primaryAttribute) {
+      throw new Error(`Primary attribute '${name}' not found.`);
+    }
+    return primaryAttribute;
   }
 
   /**
@@ -120,8 +125,21 @@ export class Character extends GameObject {
    * @param name The name of the secondary attribute.
    */
   getSecondaryAttribute(name: CharacterSecondaryAttributeName): SecondaryAttribute {
-    return this.getChildren('character.secondary-attribute').find(
+    const secondaryAttribute = this.getChildren('character.secondary-attribute').find(
       (secondaryAttribute) => secondaryAttribute.name === name,
-    ) as SecondaryAttribute;
+    ) as SecondaryAttribute | undefined;
+    // Since secondary attributes are required, we throw an error if the secondary attribute is not found.
+    if (!secondaryAttribute) {
+      throw new Error(`Secondary attribute '${name}' not found.`);
+    }
+    return secondaryAttribute;
+  }
+
+  /**
+   * Returns a skill by its name.
+   * @param name The name of the skill.
+   */
+  getSkill(name: CharacterSkillName): CharacterSkill | undefined {
+    return this.getChildren('character.skill').find((skill) => skill.name === name) as CharacterSkill | undefined;
   }
 }
