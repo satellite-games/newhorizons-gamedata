@@ -52,7 +52,7 @@ The [`Blueprint`](/lib/base//game-object/types.ts) type represents a template fo
 Besides `Game Object` there are also other primitives that make up the core parts of the game framework:
 
 - [`Dependency`](/lib/base/dependency/dependency.ts) — Game Objects may either depend on or conflict with other game objects. Both of these relations are handled by the `Dependency` class.
-- [`Modifier](/lib/base/modifier/modifier.ts) — Game Objects may come with a set of modifiers that modify other game objects. When a game object that comes with a modifier receives a new owner (e.g. a `Character`), its modifiers are applied to the owner. This system is used to e.g. apply beneficial or detrimental affects to the owner.
+- [`Modifier`](/lib/base/modifier/modifier.ts) — Game Objects may come with a set of modifiers that modify other game objects. When a game object that comes with a modifier receives a new owner (e.g. a `Character`), its modifiers are applied to the owner. This system is used to e.g. apply beneficial or detrimental affects to the owner.
 
 ### <a name='Contexts'></a>Contexts
 
