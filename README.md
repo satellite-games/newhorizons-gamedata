@@ -27,7 +27,7 @@
 
 ## <a name='Description'></a>Description
 
-`@newhorizons/core` contains a selection of core utilities that I keep reusing across my web projects. The package aims to support single-page applications or other forms of browser-side code.
+`@newhorizons/core` contains the source code for the @newhorizons/core JavaScript package. This is where all of the game-related magic happens. This repository contains the game framework, all of the game's in-game logic and master-data.
 
 ## <a name='MainFeatures'></a>Main Features
 
