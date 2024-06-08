@@ -848,7 +848,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: true,
   },
   {
-    name: 'character.skill.extraplanetary-flying',
+    name: 'character.skill.spaceships',
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
@@ -860,7 +860,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
   },
   {
-    name: 'character.skill.intraplanetary-flying',
+    name: 'character.skill.airplanes',
     category: 'character.skill-category.vehicles',
     factor: 6,
     constraintMultiplier: 0,
