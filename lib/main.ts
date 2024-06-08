@@ -11,9 +11,7 @@ export * from './base/modifier';
 export * from './constants';
 
 // Events
-export * from './events/event';
-export * from './events/event-log';
-export * from './events/types';
+export * from './events';
 
 // Character
 export * from './character';
