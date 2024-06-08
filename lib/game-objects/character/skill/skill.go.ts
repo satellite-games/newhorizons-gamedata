@@ -1,14 +1,10 @@
-import {
-  Character,
-  CharacterGameEvent,
-  GameObject,
-  PrimaryAttribute,
-  constants,
-  getOwnerCharacter,
-  type CharacterPrimaryAttributeName,
-} from '@/main';
+import { constants } from '@/constants';
+import { GameObject } from '@/base/game-object';
+import { Character, getOwnerCharacter } from '@/character';
+import { CharacterGameEvent } from '@/events';
 import type { CharacterSkillName } from './skill.registry';
-import type { CharacterSkillCategoryName } from '../skill-category/skill-category.registry';
+import type { CharacterPrimaryAttributeName, PrimaryAttribute } from '../primary-attribute';
+import type { CharacterSkillCategoryName } from '../skill-category';
 
 export class CharacterSkill extends GameObject {
   declare name: CharacterSkillName;
