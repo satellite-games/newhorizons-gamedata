@@ -12,7 +12,7 @@ export const testGameObject = async <TGameObject extends GameObject>(
   test(`should instantiate a game object of '${gameObjectCollectionName}'`, async () => {
     const mainModule = await import('@/main');
     const blueprints = mainModule.blueprints[gameObjectCollectionName];
-    if (!blueprints) throw new Error(`Unable to find blueprints for game object '${GameObjectCollectionName}'.`);
+    if (!blueprints) throw new Error(`Unable to find blueprints for game object '${gameObjectCollectionName}'.`);
     const gameObject = new constructor(blueprints[0]);
 
     // Assertions
