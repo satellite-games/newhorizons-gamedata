@@ -57,6 +57,9 @@
     "create-registry": "node scripts/create-registry.js",
     "lint-registries": "node scripts/lint-registries.js"
   },
+  "dependencies": {
+    "@satellite-games/orbit": "link:../orbit"
+  },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@spuxx/browser-utils": "^0.3.0",

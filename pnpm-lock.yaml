@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@satellite-games/orbit':
+        specifier: link:../orbit
+        version: link:../orbit
     devDependencies:
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
