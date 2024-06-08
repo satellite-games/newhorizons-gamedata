@@ -5,7 +5,6 @@ import { PrimaryAttribute } from './primary-attribute.go';
 import { EventLog } from '@/events';
 import { Character } from '@/character';
 import { CharacterGameEvent } from '@/main';
-import { beforeEach } from 'node:test';
 
 testGameObject(PrimaryAttribute, 'character.primary-attribute');
 
