@@ -1,5 +1,5 @@
 import type { NonFunctionPropertyNames } from '@/types/private-types';
-import { GameObject, getCollectionName } from '@/main';
+import { GameObject, getCollectionName, type GameObjectName } from '@/main';
 import type { IDependency } from './types';
 
 /**
@@ -8,7 +8,7 @@ import type { IDependency } from './types';
  * be accessible at all.
  */
 export class Dependency<TDependency extends GameObject | unknown> implements IDependency<TDependency> {
-  declare dependencyName: string;
+  declare dependencyName: GameObjectName;
   declare key?: keyof Omit<Pick<TDependency, NonFunctionPropertyNames<TDependency>>, 'id' | 'name'>;
   declare value?: unknown;
   declare isConflict?: boolean;
