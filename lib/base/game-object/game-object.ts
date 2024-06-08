@@ -4,7 +4,7 @@ import type { Blueprint, Saved } from './types';
 import type { ElementType, NumericProperty } from '@/types/private-types';
 import { getModifiedValue, type Modifier } from '../modifier';
 import type { Dependency } from '../dependency/dependency';
-import type { GameObjectName, GameObjectRegistry } from '@/registry';
+import type { GameObjectCollectionName, GameObjectRegistry } from '@/registry';
 import { getCollectionName } from './game-object.utils';
 
 /**
@@ -36,7 +36,7 @@ export class GameObject implements GameObject {
   /**
    * Any child game objects that are stored on this game object.
    */
-  children: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
+  children: Partial<Record<GameObjectCollectionName, Array<GameObjectRegistry[GameObjectCollectionName]>>>;
 
   constructor(init: {
     name: string;
@@ -44,7 +44,7 @@ export class GameObject implements GameObject {
     owner?: GameObject | null;
     modifiers?: Modifier<any>[];
     dependencies?: Dependency<any>[];
-    children?: Partial<Record<GameObjectName, Array<GameObjectRegistry[GameObjectName]>>>;
+    children?: Partial<Record<GameObjectCollectionName, Array<GameObjectRegistry[GameObjectCollectionName]>>>;
     [key: string]: any;
   }) {
     // Perform a shallow copy of the initialization object. This also covers
@@ -87,7 +87,7 @@ export class GameObject implements GameObject {
     TChildren extends ElementType<TGameObject['children'][keyof TGameObject['children']]>,
   >(children: TChildren[]) {
     const collectionName = getCollectionName((children[0] as GameObject).name);
-    const oldChildren = this.children[collectionName as GameObjectName];
+    const oldChildren = this.children[collectionName as GameObjectCollectionName];
     if (!oldChildren) {
       throw new Error(
         `Collection name '${collectionName}' is not a valid child collection for game object '${this.name}'.`,
