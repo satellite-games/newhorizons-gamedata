@@ -115,7 +115,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.biology-and-medicine',
+        name: 'character.skill.biology-and-medicine',
         key: 'current',
         value: 3,
       },
@@ -182,7 +182,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.electronics',
+        name: 'character.skill.electronics',
         key: 'current',
         value: 3,
       },
@@ -206,12 +206,12 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.chemistry',
+        name: 'character.skill.chemistry',
         key: 'current',
         value: 3,
       },
       {
-        dependencyName: 'character.skill.electronics',
+        name: 'character.skill.electronics',
         key: 'current',
         value: 3,
       },
@@ -231,7 +231,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.music',
+        name: 'character.skill.music',
         key: 'current',
         value: 3,
       },
@@ -262,12 +262,12 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.electronics',
+        name: 'character.skill.electronics',
         key: 'current',
         value: 3,
       },
       {
-        dependencyName: 'character.skill.physics-and-mechanics',
+        name: 'character.skill.physics-and-mechanics',
         key: 'current',
         value: 3,
       },
@@ -286,7 +286,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.biology-and-medicine',
+        name: 'character.skill.biology-and-medicine',
         key: 'current',
         value: 3,
       },
@@ -305,12 +305,12 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.biology-and-medicine',
+        name: 'character.skill.biology-and-medicine',
         key: 'current',
         value: 3,
       },
       {
-        dependencyName: 'character.skill.chemistry',
+        name: 'character.skill.chemistry',
         key: 'current',
         value: 3,
       },
@@ -329,7 +329,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.gaming',
+        name: 'character.skill.gaming',
         key: 'current',
         value: 3,
       },
@@ -348,7 +348,7 @@ export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max
     isCoreSkill: false,
     dependencies: [
       {
-        dependencyName: 'character.skill.information-technology',
+        name: 'character.skill.information-technology',
         key: 'current',
         value: 5,
       },

@@ -291,7 +291,7 @@ describe('serialize', () => {
       ];
       dependencies = [
         new Dependency<PrimaryAttribute>({
-          dependencyName: 'dependency',
+          name: 'dependency',
         }),
       ];
     }
@@ -309,7 +309,7 @@ describe('serialize', () => {
       },
       dependencies: [
         {
-          dependencyName: 'dependency',
+          name: 'dependency',
         },
       ],
       modifiers: [
