@@ -158,6 +158,43 @@ describe('removeChild', () => {
   });
 });
 
+describe('findChildByName', () => {
+  it('should return the child with the given name', () => {
+    class Parent extends GameObject {
+      children: {
+        'character.primary-attribute': PrimaryAttribute[];
+        'character.secondary-attribute': SecondaryAttribute[];
+      } = {
+        'character.primary-attribute': [],
+        'character.secondary-attribute': [],
+      };
+    }
+    const parent = new Parent({ name: 'parent' });
+    const child1 = new PrimaryAttribute({ name: 'character.primary-attribute.1' });
+    const child2 = new PrimaryAttribute({ name: 'character.primary-attribute.1' });
+    const child3 = new SecondaryAttribute({ name: 'character.secondary-attribute.1' });
+    parent.addChild<Parent, PrimaryAttribute>(child1);
+    parent.addChild<Parent, PrimaryAttribute>(child2);
+    parent.addChild<Parent, SecondaryAttribute>(child3);
+    expect(parent.findChildByName('character.primary-attribute.1')).toBe(child1);
+    expect(parent.findChildByName('character.secondary-attribute.1')).toBe(child3);
+  });
+
+  it("should return undefined if the child with the given name doesn't exist", () => {
+    class Parent extends GameObject {
+      children: {
+        'character.primary-attribute': PrimaryAttribute[];
+      } = {
+        'character.primary-attribute': [],
+      };
+    }
+    const parent = new Parent({ name: 'parent' });
+    const child = new PrimaryAttribute({ name: 'character.primary-attribute.1' });
+    parent.addChild<Parent, PrimaryAttribute>(child);
+    expect(parent.findChildByName('non-existing-name')).toBeUndefined();
+  });
+});
+
 describe('findChildById', () => {
   it('should return the child with the given id', () => {
     class Parent extends GameObject {
@@ -181,7 +218,7 @@ describe('findChildById', () => {
     expect(parent.findChildById(child3.id)).toBe(child3);
   });
 
-  it("should return null if the child with the given id doesn't exist", () => {
+  it("should return undefined if the child with the given id doesn't exist", () => {
     class Parent extends GameObject {
       children: {
         'character.primary-attribute': PrimaryAttribute[];
@@ -192,7 +229,7 @@ describe('findChildById', () => {
     const parent = new Parent({ name: 'parent' });
     const child = new PrimaryAttribute({ name: 'character.primary-attribute.1' });
     parent.addChild<Parent, PrimaryAttribute>(child);
-    expect(parent.findChildById('non-existing-id')).toBe(null);
+    expect(parent.findChildById('non-existing-id')).toBeUndefined();
   });
 });
 

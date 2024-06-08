@@ -135,16 +135,30 @@ export class GameObject implements GameObject {
   }
 
   /**
+   * Finds a child by its name. This method searches all children of the game object.
+   * Returns `undefined` if the child is not found. If multiple children have the same name,
+   * the first child found is returned.
+   * @param name
+   */
+  findChildByName<TGameObject extends GameObject>(name: string): TGameObject | undefined {
+    for (const collection of Object.values(this.children)) {
+      const child = collection.find((child) => (child as GameObject).name === name);
+      if (child) return child as TGameObject;
+    }
+    return undefined;
+  }
+
+  /**
    * Finds a child by its unique identifier. This method searches all children of the game object.
-   * Returns null if the child is not found.
+   * Returns `undefined` if the child is not found.
    * @param id The unique identifier of the child to find.
    */
-  findChildById(id: string): GameObject | null {
+  findChildById<TGameObject extends GameObject>(id: string): TGameObject | undefined {
     for (const collection of Object.values(this.children)) {
       const child = collection.find((child) => (child as GameObject).id === id);
-      if (child) return child;
+      if (child) return child as TGameObject;
     }
-    return null;
+    return undefined;
   }
 
   /**
