@@ -1,5 +1,5 @@
+import { GameObject } from '@satellite-games/orbit';
 import { constants } from '@/constants';
-import { GameObject } from '@/base/game-object';
 import { Character, getOwnerCharacter } from '@/character';
 import { CharacterGameEvent } from '@/events';
 import type { CharacterSkillName } from './skill.registry';
@@ -111,9 +111,7 @@ export class CharacterSkill extends GameObject {
     }
   }
 
-  serialize(): string {
-    // When serializing the skill, the min level is set to the current level.
-    const min = this.current;
-    return super.serialize({ ...this, min });
+  beforeSerialize(state: CharacterSkill) {
+    return { ...state, min: state.current };
   }
 }

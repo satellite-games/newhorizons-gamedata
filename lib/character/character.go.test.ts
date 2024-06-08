@@ -33,8 +33,8 @@ describe('getPrimaryAttribute', () => {
 describe('getSecondaryAttribute', () => {
   it('should return secondary attribute by name', async () => {
     const character = Character.initialize();
-    const secondaryAttribute = character.getSecondaryAttribute('character.secondary-attribute.health-points');
-    expect(secondaryAttribute.name).toBe('character.secondary-attribute.health-points');
+    const secondaryAttribute = character.getSecondaryAttribute('character.secondary-attribute.health');
+    expect(secondaryAttribute.name).toBe('character.secondary-attribute.health');
   });
 
   it('should throw error if secondary attribute not found', async () => {

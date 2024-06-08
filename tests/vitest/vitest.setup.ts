@@ -1,4 +1,4 @@
-import { EventLog } from '@/events';
+import { EventLog } from '@satellite-games/orbit';
 import { afterEach, vi } from 'vitest';
 
 afterEach(() => {

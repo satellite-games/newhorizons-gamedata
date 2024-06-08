@@ -1,5 +1,4 @@
-import { GameEvent } from '../event';
-import { type GameEventInit, GameEventType } from '../types';
+import { GameEvent, GameEventType, type GameEventInit } from '@satellite-games/orbit';
 
 /**
  * An event related to a specific character.

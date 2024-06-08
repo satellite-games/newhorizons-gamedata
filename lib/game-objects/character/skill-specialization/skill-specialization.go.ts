@@ -1,4 +1,4 @@
-import { GameObject } from '@/main';
+import { GameObject } from '@satellite-games/orbit';
 import type { CharacterSkillName } from '../skill/skill.registry';
 import type { CharacterSkillSpecializationName } from './skill-specialization.registry';
 

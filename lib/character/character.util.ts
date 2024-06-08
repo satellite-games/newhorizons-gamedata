@@ -1,4 +1,4 @@
-import type { GameObject } from '@/main';
+import type { GameObject } from '@satellite-games/orbit';
 import { Character } from './character.go';
 
 /**

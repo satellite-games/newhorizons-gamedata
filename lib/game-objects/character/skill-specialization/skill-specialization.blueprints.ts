@@ -1,4 +1,4 @@
-import type { Blueprint } from '@/main';
+import type { Blueprint } from '@satellite-games/orbit';
 import type { CharacterSkillSpecialization } from './skill-specialization.go';
 
 export const characterSkillSpecializations: Blueprint<CharacterSkillSpecialization>[] = [

@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { EventLog } from '@/main';
 import { Character } from '@/character';
 import { characterSkillMocks } from './skill.blueprint-mocks';
 import { CharacterSkill } from './skill.go';
 import { constants } from '@/constants';
+import { EventLog } from '@satellite-games/orbit';
 
 describe('constructor', () => {
   it('should properly construct from blueprint', () => {

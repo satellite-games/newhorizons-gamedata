@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { GameObject } from '@/main';
+import { GameObject } from '@satellite-games/orbit';
 import { getOwnerCharacter } from './character.util';
 
 describe('getOwnerCharacter', () => {

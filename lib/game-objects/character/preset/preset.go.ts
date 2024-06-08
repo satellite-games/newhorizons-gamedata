@@ -1,4 +1,4 @@
-import { GameObject } from '@/base/game-object/game-object';
+import { GameObject } from '@satellite-games/orbit';
 import type { CharacterPresetName } from './preset.registry';
 
 /**

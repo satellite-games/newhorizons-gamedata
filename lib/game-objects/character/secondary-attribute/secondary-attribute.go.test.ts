@@ -1,6 +1,6 @@
+import { Modifier } from '@satellite-games/orbit';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { Character } from '@/character/character.go';
-import { Modifier } from '@/base/modifier';
 import { SecondaryAttribute } from './secondary-attribute.go';
 import { PrimaryAttribute } from '../primary-attribute';
 
@@ -19,10 +19,10 @@ it('should foo', () => {
 
 describe('total', () => {
   it('should get the correct total value of the secondary attribute', () => {
-    const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
-    expect(healthPoints.total).toBe(20);
-    const staminaPoints = character.getSecondaryAttribute('character.secondary-attribute.stamina-points');
-    expect(staminaPoints.total).toBe(15);
+    const health = character.getSecondaryAttribute('character.secondary-attribute.health');
+    expect(health.total).toBe(20);
+    const stamina = character.getSecondaryAttribute('character.secondary-attribute.stamina');
+    expect(stamina.total).toBe(15);
     const reaction = character.getSecondaryAttribute('character.secondary-attribute.reaction');
     expect(reaction.total).toBe(8);
     const defense = character.getSecondaryAttribute('character.secondary-attribute.defense');
@@ -36,21 +36,25 @@ describe('total', () => {
   });
 
   it('should get the correct remaining value of the secondary attribute', () => {
-    const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
-    healthPoints.difference = 5;
-    expect(healthPoints.getModifiedValue<SecondaryAttribute>('remaining', [])).toBe(15);
+    const health = character.getSecondaryAttribute('character.secondary-attribute.health');
+    health.difference = 5;
+    expect(health.getModifiedValue<SecondaryAttribute>('remaining', character)).toBe(15);
   });
 
   it('should get the correct total and remaining value of the secondary attribute when it is modified', () => {
-    const healthPoints = character.getSecondaryAttribute('character.secondary-attribute.health-points');
-    healthPoints.difference = 5;
+    const health = character.getSecondaryAttribute('character.secondary-attribute.health');
+    expect(health.getModifiedValue<SecondaryAttribute>('total', character)).toBe(20);
+    expect(health.getModifiedValue<SecondaryAttribute>('remaining', character)).toBe(20);
+    health.difference = 5;
+    expect(health.getModifiedValue<SecondaryAttribute>('total', character)).toBe(20);
+    expect(health.getModifiedValue<SecondaryAttribute>('remaining', character)).toBe(15);
     const modifier = new Modifier<SecondaryAttribute>({
-      cause: 'modifier',
-      modifiedName: 'character.secondary-attribute.health-points',
-      modifiedKeys: ['total', 'remaining'],
+      targetName: 'character.secondary-attribute.health',
+      keys: ['total'],
       amount: -5,
     });
-    expect(healthPoints.getModifiedValue<SecondaryAttribute>('total', [modifier])).toBe(15);
-    expect(healthPoints.getModifiedValue<SecondaryAttribute>('remaining', [modifier])).toBe(10);
+    character.modifiers = [modifier];
+    expect(health.getModifiedValue<SecondaryAttribute>('total', character)).toBe(15);
+    expect(health.getModifiedValue<SecondaryAttribute>('remaining', character)).toBe(10);
   });
 });

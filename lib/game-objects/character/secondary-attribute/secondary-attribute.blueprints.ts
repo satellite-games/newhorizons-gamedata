@@ -1,9 +1,9 @@
-import type { Blueprint } from '@/base/game-object/types';
+import type { Blueprint } from '@satellite-games/orbit';
 import { SecondaryAttribute } from './secondary-attribute.go';
 
 export const secondaryAttributes: Blueprint<SecondaryAttribute, 'total' | 'remaining'>[] = [
   {
-    name: 'character.secondary-attribute.health-points',
+    name: 'character.secondary-attribute.health',
     difference: 0,
     formula: {
       primaryAttributes: ['character.primary-attribute.constitution', 'character.primary-attribute.constitution'],
@@ -11,7 +11,7 @@ export const secondaryAttributes: Blueprint<SecondaryAttribute, 'total' | 'remai
     },
   },
   {
-    name: 'character.secondary-attribute.stamina-points',
+    name: 'character.secondary-attribute.stamina',
     difference: 0,
     formula: {
       primaryAttributes: [

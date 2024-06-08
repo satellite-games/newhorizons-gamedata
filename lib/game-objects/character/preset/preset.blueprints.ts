@@ -1,4 +1,4 @@
-import type { Blueprint } from '@/base/game-object/types';
+import type { Blueprint } from '@satellite-games/orbit';
 import { CharacterPreset } from '@/game-objects/character/preset/preset.go';
 
 export const characterPresets: Blueprint<CharacterPreset>[] = [

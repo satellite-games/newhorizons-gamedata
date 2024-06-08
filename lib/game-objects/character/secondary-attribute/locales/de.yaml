@@ -1,8 +1,8 @@
 ---
 character:
   secondary-attribute:
-    health-points: Lebenspunkte
-    stamina-points: Ausdauerpunkte
+    health: Lebenspunkte
+    stamina: Ausdauerpunkte
     reaction: Reaktion
     defense: Verteidigung
     speed: Geschwindigkeit

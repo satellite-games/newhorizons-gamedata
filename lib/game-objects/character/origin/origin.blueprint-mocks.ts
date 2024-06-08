@@ -1,4 +1,4 @@
-import type { Blueprint } from '@/base/game-object';
+import type { Blueprint } from '@satellite-games/orbit';
 import type { CharacterOrigin } from './origin.go';
 
 export const characterOriginMocks: { simple: Blueprint<CharacterOrigin> } = {

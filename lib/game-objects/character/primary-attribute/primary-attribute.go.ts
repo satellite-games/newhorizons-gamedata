@@ -1,5 +1,5 @@
-import { GameObject } from '@/base/game-object/game-object';
-import { CharacterGameEvent } from '@/events/event-types/character.event';
+import { GameObject } from '@satellite-games/orbit';
+import { CharacterGameEvent } from '@/events/character.event';
 import type { CharacterPrimaryAttributeName } from './primary-attribute.registry';
 
 export class PrimaryAttribute extends GameObject {
@@ -41,9 +41,7 @@ export class PrimaryAttribute extends GameObject {
     }
   }
 
-  serialize(): string {
-    // When serializing the primary attribute, the min level is set to the current level.
-    const min = this.current;
-    return super.serialize({ ...this, min });
+  beforeSerialize(state: PrimaryAttribute) {
+    return { ...state, min: state.current };
   }
 }

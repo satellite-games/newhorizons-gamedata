@@ -2,10 +2,8 @@
 // Make sure to re-export all data and objects through this file. Otherwise
 // they will not be included into the bundle.
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// Base
-export * from './base/game-object';
-export * from './base/modifier';
+// Re-export everything from @satellite-games/orbit
+export * from '@satellite-games/orbit';
 
 // Constants
 export * from './constants';

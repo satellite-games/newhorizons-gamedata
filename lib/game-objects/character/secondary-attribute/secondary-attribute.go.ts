@@ -1,4 +1,4 @@
-import { GameObject } from '@/base/game-object/game-object';
+import { GameObject } from '@satellite-games/orbit';
 import { PrimaryAttribute, type CharacterPrimaryAttributeName } from '@/game-objects/character/primary-attribute';
 import { type Character } from '@/character/character.go';
 import type { CharacterSecondaryAttributeName } from './secondary-attribute.registry';
@@ -34,10 +34,7 @@ export class SecondaryAttribute extends GameObject {
     const character = getOwnerCharacter(this);
     const primaryAttributes = this.getPrimaryAttributes(character);
     const primaryAttributeValues = primaryAttributes.map((primaryAttribute) =>
-      primaryAttribute.getModifiedValue<PrimaryAttribute>(
-        'current',
-        character.getModifiers({ modifiedName: primaryAttribute.name }),
-      ),
+      primaryAttribute.getModifiedValue<PrimaryAttribute>('current', character),
     );
     return Math.round(primaryAttributeValues.reduce((sum, value) => sum + value, 0) / this.formula.divisor);
   }
@@ -47,7 +44,7 @@ export class SecondaryAttribute extends GameObject {
    */
   get remaining(): number {
     const character = getOwnerCharacter(this);
-    const total = this.getModifiedValue<SecondaryAttribute>('total', character.getModifiers<SecondaryAttribute>());
+    const total = this.getModifiedValue<SecondaryAttribute>('total', character);
     return total - this.difference;
   }
 

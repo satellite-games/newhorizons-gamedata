@@ -1,5 +1,4 @@
-import { GameObject } from '@/base/game-object';
-import type { GameObjectInit } from '@/base/game-object/types';
+import { GameObject, type GameObjectInit } from '@satellite-games/orbit';
 import {
   primaryAttributes,
   PrimaryAttribute,

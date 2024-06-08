@@ -1,12 +1,9 @@
+import { EventLog } from '@satellite-games/orbit';
 import { primaryAttributes } from '@/game-objects/character/primary-attribute';
-import { testGameObject } from 'tests/vitest/helpers/test-game-object';
 import { describe, expect, it } from 'vitest';
 import { PrimaryAttribute } from './primary-attribute.go';
-import { EventLog } from '@/events';
 import { Character } from '@/character';
 import { CharacterGameEvent } from '@/main';
-
-testGameObject(PrimaryAttribute, 'character.primary-attribute');
 
 describe('changeValue', () => {
   it('should increase the current value of the primary attribute by the specified amount', () => {

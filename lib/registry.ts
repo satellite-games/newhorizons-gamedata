@@ -1,4 +1,4 @@
-import type { Blueprint } from '@/base/game-object';
+import type { Blueprint } from '@satellite-games/orbit';
 import { Character } from '@/character';
 import { characterOrigins, type CharacterOrigin, type CharacterOriginName } from './game-objects/character/origin';
 import { characterPresets, type CharacterPreset, type CharacterPresetName } from './game-objects/character/preset';
@@ -20,9 +20,6 @@ import {
 } from './game-objects/character/skill-specialization';
 import { characterAbilities, type CharacterAbility, type CharacterAbilityName } from './game-objects/character/ability';
 
-/**
- * The registry of all game objects.
- */
 export interface GameObjectRegistry {
   character: Character;
   'character.origin': CharacterOrigin;
@@ -33,7 +30,8 @@ export interface GameObjectRegistry {
   'character.skill-specialization': CharacterSkillSpecialization;
   'character.ability': CharacterAbility;
 }
-export type GameObjectCollectionName = keyof GameObjectRegistry;
+export type GameObjectTypeName = keyof GameObjectRegistry;
+
 export type GameObjectName =
   | CharacterOriginName
   | CharacterPresetName
@@ -47,7 +45,7 @@ export type GameObjectName =
  * The registry of all blueprint collections.
  */
 export const blueprints: {
-  [K in GameObjectCollectionName]: Blueprint<GameObjectRegistry[K]>[];
+  [K in GameObjectTypeName]: Blueprint<GameObjectRegistry[K]>[];
 } = {
   character: [],
   'character.origin': characterOrigins,

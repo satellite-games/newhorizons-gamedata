@@ -1,6 +1,5 @@
-import type { Blueprint } from '@/main';
+import type { Blueprint, Dependency } from '@satellite-games/orbit';
 import type { CharacterSkill } from './skill.go';
-import type { Dependency } from '@/base/dependency/dependency';
 
 export const characterSkills: Blueprint<CharacterSkill, 'min' | 'current' | 'max'>[] = [
   {

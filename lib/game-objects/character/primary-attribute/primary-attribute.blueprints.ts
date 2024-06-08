@@ -1,4 +1,4 @@
-import type { Blueprint } from '@/base/game-object/types';
+import type { Blueprint } from '@satellite-games/orbit';
 import { PrimaryAttribute } from '@/game-objects/character/primary-attribute';
 
 export const primaryAttributes: Blueprint<PrimaryAttribute>[] = [
