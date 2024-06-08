@@ -7,16 +7,8 @@ import { characterSkills, CharacterSkill } from './game-objects/character/skill'
 import {
   characterSkillSpecializations,
   CharacterSkillSpecialization,
-  type CharacterSkillSpecializationName,
 } from './game-objects/character/skill-specialization';
-import type {
-  Blueprint,
-  CharacterOriginName,
-  CharacterPresetName,
-  CharacterPrimaryAttributeName,
-  CharacterSecondaryAttributeName,
-  CharacterSkillName,
-} from './main';
+import type { Blueprint } from './main';
 
 /**
  * The registry of all game objects.
@@ -46,13 +38,3 @@ export const blueprints: {
   'character.skill': characterSkills as Blueprint<CharacterSkill>[],
   'character.skill-specialization': characterSkillSpecializations,
 } as const;
-
- * The unified type of all registered game object names.
- */
-export type GameObjectName =
-  | CharacterOriginName
-  | CharacterPresetName
-  | CharacterPrimaryAttributeName
-  | CharacterSecondaryAttributeName
-  | CharacterSkillName
-  | CharacterSkillSpecializationName;
