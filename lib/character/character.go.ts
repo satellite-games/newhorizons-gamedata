@@ -106,7 +106,7 @@ export class Character extends GameObject {
   // }
 
   /**
-   * Returns a primary attribute by its name.
+   * Returns a primary attribute by its name. Throws an error if the primary attribute is not found.
    * @param name The name of the primary attribute.
    */
   getPrimaryAttribute(name: CharacterPrimaryAttributeName): PrimaryAttribute {
@@ -121,7 +121,7 @@ export class Character extends GameObject {
   }
 
   /**
-   * Returns a secondary attribute by its name.
+   * Returns a secondary attribute by its name. Throws an error if the secondary attribute is not found.
    * @param name The name of the secondary attribute.
    */
   getSecondaryAttribute(name: CharacterSecondaryAttributeName): SecondaryAttribute {
@@ -136,7 +136,7 @@ export class Character extends GameObject {
   }
 
   /**
-   * Returns a skill by its name.
+   * Returns a skill by its name. Returns `undefined` if the skill is not found.
    * @param name The name of the skill.
    */
   getSkill(name: CharacterSkillName): CharacterSkill | undefined {
