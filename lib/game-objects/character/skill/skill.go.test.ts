@@ -47,13 +47,21 @@ describe('add and remove', () => {
     skill.addToCharacter(character);
     expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([skill]);
     // Should do nothing if the character already has the skill
-    skill.addToCharacter(character);
+    const addedSkill = skill.addToCharacter(character);
+    expect(addedSkill).toBe(skill);
     expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([skill]);
     skill.removeFromCharacter(character);
     expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([]);
     // Should do nothing if the character does not have the skill
     skill.removeFromCharacter(character);
     expect(character.getChildren<Character, CharacterSkill>('character.skill')).toEqual([]);
+  });
+
+  it('should return the owned skill when trying to add a skill that the character already has', () => {
+    const character = Character.initialize();
+    const skill = new CharacterSkill(characterSkillMocks.coreSkill);
+    const ownedSkill = skill.addToCharacter(character);
+    expect(ownedSkill).not.toBe(skill);
   });
 
   it("should create an event when adding and removing the skill from the character's children", () => {

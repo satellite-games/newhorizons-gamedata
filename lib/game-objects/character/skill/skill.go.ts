@@ -62,16 +62,19 @@ export class CharacterSkill extends GameObject {
   }
 
   /**
-   * Adds the skill to the given character. Will do nothing if the character already has the skill.
+   * Adds the skill to the given character and return it. Will do nothing if the character
+   * already has the skill.
    * @param character The character to add the skill to.
    */
-  addToCharacter(character: Character): void {
-    if (character.findChildByName(this.name)) return;
+  addToCharacter(character: Character): CharacterSkill {
+    const ownedSkill = character.findChildByName<CharacterSkill>(this.name);
+    if (ownedSkill) return ownedSkill;
     character.addChild<Character, CharacterSkill>(this);
     new CharacterGameEvent({
       characterId: character.id,
       message: `Added skill '${this.name}'.`,
     });
+    return this;
   }
 
   /**
