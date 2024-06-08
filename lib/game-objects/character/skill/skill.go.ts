@@ -4,14 +4,14 @@ import { Character, getOwnerCharacter } from '@/character';
 import { CharacterGameEvent } from '@/events';
 import type { CharacterSkillName } from './skill.registry';
 import type { CharacterPrimaryAttributeName, PrimaryAttribute } from '../primary-attribute';
-import type { CharacterSkillCategoryName } from '../skill-category';
+import type { CharacterSkillCategory } from './types';
 
 export class CharacterSkill extends GameObject {
   declare name: CharacterSkillName;
   /**
    * The category of the skill.
    */
-  declare category: CharacterSkillCategoryName;
+  declare category: CharacterSkillCategory;
   /**
    * The leveling factor of the skill. Defines how expensive it is to level up the skill.
    */

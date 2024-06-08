@@ -4,13 +4,11 @@ import { characterPresets, CharacterPreset } from './game-objects/character/pres
 import { primaryAttributes, PrimaryAttribute } from './game-objects/character/primary-attribute';
 import { secondaryAttributes, SecondaryAttribute } from './game-objects/character/secondary-attribute';
 import { characterSkills, CharacterSkill } from './game-objects/character/skill';
-import { CharacterSkillCategory } from './game-objects/character/skill-category/skill-category.go';
 import {
   characterSkillSpecializations,
   CharacterSkillSpecialization,
 } from './game-objects/character/skill-specialization';
 import type { Blueprint } from './main';
-import { characterSkillCategories } from './game-objects/character/skill-category/skill-category.blueprints';
 
 /**
  * The registry of all game objects.
@@ -22,7 +20,6 @@ export interface GameObjectRegistry {
   'character.primary-attribute': PrimaryAttribute;
   'character.secondary-attribute': SecondaryAttribute;
   'character.skill': CharacterSkill;
-  'character.skill-category': CharacterSkillCategory;
   'character.skill-specialization': CharacterSkillSpecialization;
 }
 export type GameObjectName = keyof GameObjectRegistry;
@@ -39,6 +36,5 @@ export const blueprints: {
   'character.primary-attribute': primaryAttributes,
   'character.secondary-attribute': secondaryAttributes as Blueprint<SecondaryAttribute>[],
   'character.skill': characterSkills as Blueprint<CharacterSkill>[],
-  'character.skill-category': characterSkillCategories,
   'character.skill-specialization': characterSkillSpecializations,
 } as const;

@@ -24,5 +24,4 @@ export * from './game-objects/character/preset';
 export * from './game-objects/character/primary-attribute';
 export * from './game-objects/character/secondary-attribute';
 export * from './game-objects/character/origin';
-export * from './game-objects/character/skill-category';
 export * from './game-objects/character/skill';
