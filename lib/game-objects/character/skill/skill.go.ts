@@ -1,5 +1,6 @@
 import {
   Character,
+  CharacterGameEvent,
   GameObject,
   PrimaryAttribute,
   constants,
@@ -57,23 +58,63 @@ export class CharacterSkill extends GameObject {
   get max(): number {
     const character = getOwnerCharacter(this);
     const primaryAttributes = character.getChildren<Character, PrimaryAttribute>('character.primary-attribute');
+    if (!primaryAttributes.length) throw new Error('The character does not have any primary attributes.');
     const highestPrimaryAttribute = primaryAttributes.reduce((highest, attribute) => {
       return attribute.current > highest.current ? attribute : highest;
     });
     return highestPrimaryAttribute.current * constants.SKILL_MAX_LEVEL_MULTIPLIER;
   }
 
+  /**
+   * Adds the skill to the given character. Will do nothing if the character already has the skill.
+   * @param character The character to add the skill to.
+   */
+  addToCharacter(character: Character): void {
+    if (character.findChildByName(this.name)) return;
+    character.addChild<Character, CharacterSkill>(this);
+    new CharacterGameEvent({
+      characterId: character.id,
+      message: `Added skill '${this.name}'.`,
+    });
+  }
+
+  /**
+   * Removes the skill from the given character. Will do nothing if the character does not have
+   * the skill.
+   * @param character The character to remove the skill from.
+   */
+  removeFromCharacter(character: Character): void {
+    if (!character.findChildByName(this.name)) return;
+    character.removeChild<Character, CharacterSkill>(this);
+    new CharacterGameEvent({
+      characterId: character.id,
+      message: `Removed skill '${this.name}'.`,
+    });
+  }
+
+  /**
+   * Increases or decreases the current value of the skill by the specified amount.
+   * If the new value is within the minimum and maximum values, the operation will succeed and
+   * the new value is returned. Otherwise, the value will not change and nothing will be returned.
+   * @param amount The amount to change the value by.
+   */
+  changeValue(amount: number): number | void {
+    const oldValue = this.current;
+    const newValue = this.current + amount;
+    if (newValue >= this.min && newValue <= this.max) {
+      this.current = newValue;
+      if (this.owner)
+        new CharacterGameEvent({
+          characterId: this.owner.id,
+          message: `Skill value changed from ${oldValue} to ${newValue}.`,
+        });
+      return this.current;
+    }
+  }
+
   serialize(): string {
     // When serializing the skill, the min level is set to the current level.
     const min = this.current;
     return super.serialize({ ...this, min });
-  }
-
-  addToCharacter(character: Character): void {
-    character.addChild<Character, CharacterSkill>(this);
-  }
-
-  removeFromCharacter(character: Character): void {
-    character.removeChild<Character, CharacterSkill>(this);
   }
 }
