@@ -30,7 +30,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
       }),
     ];
     const entity = new Entity({} as any);
@@ -43,7 +42,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.nonexistent',
-        dependent: dependent.name,
       }),
     ];
     const entity = new Entity({} as any);
@@ -57,7 +55,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
         key: 'hello',
         value: 'world',
       }),
@@ -72,7 +69,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
         key: 'hello',
         value: 'universe',
       }),
@@ -88,7 +84,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
         key: 'answer',
         value: 32,
       }),
@@ -103,7 +98,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
         key: 'answer',
         value: 52,
       }),
@@ -119,7 +113,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'non-existent.collection',
-        dependent: dependent.name,
       }),
     ];
     const entity = new Entity({} as any);
@@ -133,7 +126,6 @@ describe('regular dependencies', () => {
     dependent.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: dependent.name,
         key: 'non-existent' as any,
         value: 'foo',
       }),
@@ -154,7 +146,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.non-existing',
-        dependent: conflict.name,
         isConflict: true,
       }),
     ];
@@ -168,7 +159,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         isConflict: true,
       }),
     ];
@@ -183,7 +173,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         key: 'hello',
         value: 'universe',
         isConflict: true,
@@ -199,7 +188,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         key: 'hello',
         value: 'world',
         isConflict: true,
@@ -216,7 +204,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         key: 'answer',
         value: 52,
         isConflict: true,
@@ -232,7 +219,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         key: 'answer',
         value: 32,
         isConflict: true,
@@ -249,7 +235,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'non-existent.collection',
-        dependent: conflict.name,
         isConflict: true,
       }),
     ];
@@ -262,7 +247,6 @@ describe('conflict dependencies', () => {
     conflict.dependencies = [
       new Dependency({
         dependencyName: 'dependency.target',
-        dependent: conflict.name,
         key: 'non-existent' as any,
         value: 'foo',
         isConflict: true,

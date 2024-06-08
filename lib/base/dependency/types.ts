@@ -3,11 +3,6 @@ import type { GameObject } from '../game-object';
 
 export interface IDependency<TDependency extends GameObject | unknown> {
   /**
-   * The dependent. Usually matches the id or name of the game object that comes
-   * with the dependency.
-   */
-  dependent: string;
-  /**
    * The name of the game object that is being depended on.
    */
   dependencyName: string;

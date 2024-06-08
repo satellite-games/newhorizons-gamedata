@@ -292,7 +292,6 @@ describe('serialize', () => {
       dependencies = [
         new Dependency<PrimaryAttribute>({
           dependencyName: 'dependency',
-          dependent: 'character.primary-attribute.courage',
         }),
       ];
     }
@@ -310,7 +309,6 @@ describe('serialize', () => {
       },
       dependencies: [
         {
-          dependent: 'character.primary-attribute.courage',
           dependencyName: 'dependency',
         },
       ],

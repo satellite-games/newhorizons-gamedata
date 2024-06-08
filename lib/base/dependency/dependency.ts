@@ -8,7 +8,6 @@ import type { IDependency } from './types';
  * be accessible at all.
  */
 export class Dependency<TDependency extends GameObject | unknown> implements IDependency<TDependency> {
-  declare dependent: string;
   declare dependencyName: string;
   declare key?: keyof Omit<Pick<TDependency, NonFunctionPropertyNames<TDependency>>, 'id' | 'name'>;
   declare value?: unknown;
