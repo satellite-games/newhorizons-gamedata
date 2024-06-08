@@ -1,8 +1,8 @@
 import type { Blueprint } from '@/base/game-object';
 import type { CharacterOrigin } from './origin.go';
 
-export const characterOriginMocks: Blueprint<CharacterOrigin>[] = [
-  {
+export const characterOriginMocks: { simple: Blueprint<CharacterOrigin> } = {
+  simple: {
     name: 'character.origin.earth-urban',
     suitableTraits: ['character.trait.academic-education', 'character.trait.arrogance'],
     primaryAttributeBonuses: { 'character.primary-attribute.cleverness': 1 },
@@ -22,4 +22,4 @@ export const characterOriginMocks: Blueprint<CharacterOrigin>[] = [
       },
     ],
   },
-];
+};
