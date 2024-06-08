@@ -40,4 +40,10 @@ export class PrimaryAttribute extends GameObject {
       return this.current;
     }
   }
+
+  serialize(): string {
+    // When serializing the primary attribute, the min level is set to the current level.
+    const min = this.current;
+    return super.serialize({ ...this, min });
+  }
 }
