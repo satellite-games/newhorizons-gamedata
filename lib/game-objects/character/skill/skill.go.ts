@@ -62,8 +62,8 @@ export class CharacterSkill extends GameObject {
   }
 
   /**
-   * Adds the skill to the given character and return it. Will do nothing if the character
-   * already has the skill.
+   * Adds the skill to the given character and returns it. If the character already has the skill,
+   * the existing skill is returned and nothing is added.
    * @param character The character to add the skill to.
    */
   addToCharacter(character: Character): CharacterSkill {
