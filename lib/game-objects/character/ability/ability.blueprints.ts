@@ -1,13 +1,12 @@
-import type { Blueprint, Dependency, GameObjectName } from '@satellite-games/orbit';
-import type { PrimaryAttribute } from '@/main';
+import type { Blueprint, Dependency, Modifier } from '@satellite-games/orbit';
+import type { CharacterSkill, PrimaryAttribute, SecondaryAttribute } from '@/main';
 import type { CharacterAbility } from './ability.go';
 
 export const characterAbilities: Array<
   Blueprint<CharacterAbility, 'needsDetails' | 'details' | 'castTime' | 'resourceUse'> & {
     needsDetails?: boolean;
     castTime?: number;
-    staminaUse?: number;
-    powerUse?: number;
+    resourceUse?: number;
   }
 > = [
   {
@@ -27,6 +26,7 @@ export const characterAbilities: Array<
     name: 'character.ability.armor-habituation-2',
     category: 'character.ability-category.general',
     usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
         name: 'character.primary-attribute.constitution',
@@ -42,406 +42,294 @@ export const characterAbilities: Array<
         name: 'character.ability.armor-habituation-1',
       } as Dependency<CharacterAbility>,
     ],
-    cost: 200,
   },
   {
     name: 'character.ability.armor-habituation-3',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 300,
     dependencies: [
       {
         name: 'character.primary-attribute.constitution',
-        type: '',
-        input: '',
-        level: 15,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 15,
+      } as Dependency<PrimaryAttribute>,
       {
         name: 'character.primary-attribute.strength',
-        type: '',
-        input: '',
-        level: 14,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 14,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'character.ability.ArmorHabituation2',
-        type: '',
-        input: '',
-        level: 0,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.ability.armor-habituation-2',
+      } as Dependency<CharacterAbility>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 300,
   },
   {
     name: 'character.ability.combat-experience',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 400,
     dependencies: [
       {
         name: 'character.primary-attribute.dexterity',
-        type: '',
-        input: '',
-        level: 8,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 8,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 400,
   },
   {
     name: 'character.ability.implant-habituation-1',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 100,
     dependencies: [
       {
         name: 'character.primary-attribute.constitution',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 100,
   },
   {
     name: 'character.ability.implant-habituation-2',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
-        name: 'pri-a/in',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.intuition',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
       {
         name: 'character.primary-attribute.constitution',
-        type: '',
-        input: '',
-        level: 14,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 14,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'character.ability.ImplantHabituation1',
-        type: '',
-        input: '',
-        level: 0,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.ability.implant-habituation-1',
+      } as Dependency<CharacterAbility>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 200,
   },
   {
     name: 'character.ability.language',
     category: 'character.ability-category.general',
-    dependencies: [],
+    usageType: 'character.ability-usage-type.passive',
     needsDetails: true,
-    isActive: false,
-    usesPower: false,
     cost: 100,
   },
   {
     name: 'character.ability.local-knowledge',
     category: 'character.ability-category.general',
-    dependencies: [],
+    usageType: 'character.ability-usage-type.passive',
     needsDetails: true,
-    isActive: false,
-    usesPower: false,
     cost: 100,
   },
   {
     name: 'character.ability.master-of-improvisation',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
-        name: 'pri-a/in',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.intuition',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'pri-a/dx',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.dexterity',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 200,
   },
   {
     name: 'character.ability.mid-hacking',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 300,
     dependencies: [
       {
         name: 'skill/knowledge/information-technology',
-        type: '',
-        input: '',
-        level: 7,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 7,
+      } as Dependency<CharacterSkill>,
       {
         name: 'skill/crafting/programming',
-        type: '',
-        input: '',
-        level: 3,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 3,
+      } as Dependency<CharacterSkill>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 300,
   },
   {
     name: 'character.ability.quick-drawing',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
-        name: 'pri-a/ag',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.agility',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'pri-a/dx',
-        type: '',
-        input: '',
-        level: 10,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.dexterity',
+        key: 'current',
+        value: 10,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 200,
   },
   {
     name: 'character.ability.reflexes-1',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 300,
     dependencies: [
       {
-        name: 'pri-a/in',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.intuition',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'sec-a/re',
-        type: '',
-        input: '',
-        level: 10,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.secondary-attribute.reaction',
+        key: 'total',
+        value: 10,
+      } as Dependency<SecondaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 300,
-    targets: [
+    modifiers: [
       {
-        name: 'sec-a/re',
-        type: 'bonus',
-        level: 4,
-      },
+        targetName: 'character.secondary-attribute.reaction',
+        keys: 'total',
+        amount: 4,
+      } as Modifier<SecondaryAttribute>,
     ],
   },
   {
     name: 'character.ability.reflexes-2',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
-        name: 'pri-a/in',
-        type: '',
-        input: '',
-        level: 15,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.intuition',
+        key: 'current',
+        value: 15,
+      } as Dependency<PrimaryAttribute>,
       {
         name: 'skill/knowledge/tactics-and-strategy',
-        type: '',
-        input: '',
-        level: 3,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 3,
+      } as Dependency<CharacterSkill>,
       {
         name: 'character.ability.reflexes-1',
-        type: '',
-        input: '',
-        level: 0,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+      } as Dependency<CharacterAbility>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 200,
-    targets: [
+    modifiers: [
       {
-        name: 'sec-a/re',
-        type: 'bonus',
-        level: 2,
-      },
+        targetName: 'character.secondary-attribute.reaction',
+        keys: ['total'],
+        amount: 2,
+      } as Modifier<SecondaryAttribute>,
     ],
   },
   {
     name: 'character.ability.steady',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 100,
     dependencies: [
       {
-        name: 'pri-a/ag',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.agility',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 100,
   },
   {
     name: 'character.ability.strong-nerves',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 200,
     dependencies: [
       {
-        name: 'pri-a/cr',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.courage',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 200,
   },
   {
     name: 'character.ability.vti-commanding',
     category: 'character.ability-category.general',
+    usageType: 'character.ability-usage-type.passive',
+    cost: 300,
     dependencies: [
       {
         name: 'skill/knowledge/tactics-and-strategy',
-        type: '',
-        input: '',
-        level: 7,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 7,
+      } as Dependency<CharacterSkill>,
     ],
-    isActive: false,
-    usesPower: false,
-    cost: 300,
   },
   {
     name: 'character.ability.wealth-of-knowledge',
     category: 'character.ability-category.general',
-    dependencies: [
-      {
-        name: 'pri-a/cl',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
-      {
-        name: 'pri-a/in',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
-    ],
-    isActive: false,
-    usesPower: false,
+    usageType: 'character.ability-usage-type.passive',
     cost: 200,
-  },
-  {
-    name: 'ability/melee/aimed-strike',
-    category: 'character.ability-category.melee',
     dependencies: [
       {
-        name: 'pri-a/ag',
-        type: '',
-        input: '',
-        level: 13,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.cleverness',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
+      {
+        name: 'character.primary-attribute.intuition',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
     ],
-    isActive: true,
-    castTime: 1,
-    staminaUse: 1,
-    usesPower: false,
-    cost: 100,
   },
   {
-    name: 'ability/melee/breakaway',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.aimed-strike',
+    category: 'character.ability-category.melee-combat-combat',
+    usageType: 'character.ability-usage-type.uses-stamina',
+    castTime: 1,
+    resourceUse: 1,
+    cost: 100,
     dependencies: [
       {
-        name: 'pri-a/cr',
-        type: '',
-        input: '',
-        level: 12,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.primary-attribute.agility',
+        key: 'current',
+        value: 13,
+      } as Dependency<PrimaryAttribute>,
+    ],
+  },
+  {
+    name: 'character.ability.breakaway',
+    category: 'character.ability-category.melee-combat',
+    usageType: 'character.ability-usage-type.uses-stamina',
+    castTime: 1,
+    resourceUse: 3,
+    cost: 100,
+    dependencies: [
+      {
+        name: 'character.primary-attribute.courage',
+        key: 'current',
+        value: 12,
+      } as Dependency<PrimaryAttribute>,
       {
         name: 'character.primary-attribute.strength',
-        type: '',
-        input: '',
-        level: 15,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        key: 'current',
+        value: 15,
+      } as Dependency<PrimaryAttribute>,
       {
-        name: 'ability/melee/PowerAttack',
-        type: '',
-        input: '',
-        level: 0,
-        overrideCurrent: false,
-        oldLevel: 0,
-      },
+        name: 'character.ability.power-attack',
+      } as Dependency<CharacterAbility>,
     ],
-    isActive: true,
-    castTime: 1,
-    staminaUse: 3,
-    usesPower: false,
-    cost: 100,
   },
   {
-    name: 'ability/melee/disarming',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.disarming',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
         name: 'character.primary-attribute.strength',
@@ -452,7 +340,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/ImprovedParrying',
+        name: 'character.ability.ImprovedParrying',
         type: '',
         input: '',
         level: 0,
@@ -467,11 +355,11 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/evasion-1',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.evasion-1',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 10,
@@ -484,11 +372,11 @@ export const characterAbilities: Array<
     cost: 300,
   },
   {
-    name: 'ability/melee/evasion-2',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.evasion-2',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 12,
@@ -496,7 +384,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/evasion-1',
+        name: 'character.ability.evasion-1',
         type: '',
         input: '',
         level: 0,
@@ -509,11 +397,11 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/evasion-3',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.evasion-3',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 15,
@@ -521,7 +409,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/evasion-2',
+        name: 'character.ability.evasion-2',
         type: '',
         input: '',
         level: 0,
@@ -534,11 +422,11 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/feint',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.feint',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'ability/melee/aimed-strike',
+        name: 'character.ability.aimed-strike',
         type: '',
         input: '',
         level: 0,
@@ -553,8 +441,8 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/full-attack',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.full-attack',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
         name: 'character.primary-attribute.constitution',
@@ -565,7 +453,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/PowerAttack',
+        name: 'character.ability.power-attack',
         type: '',
         input: '',
         level: 0,
@@ -580,8 +468,8 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/ImprovedParrying',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.ImprovedParrying',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
         name: 'character.primary-attribute.strength',
@@ -607,8 +495,8 @@ export const characterAbilities: Array<
     cost: 100,
   },
   {
-    name: 'ability/melee/KnockingDown',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.KnockingDown',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
         name: 'character.primary-attribute.strength',
@@ -619,7 +507,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/PowerAttack',
+        name: 'character.ability.power-attack',
         type: '',
         input: '',
         level: 0,
@@ -634,8 +522,8 @@ export const characterAbilities: Array<
     cost: 100,
   },
   {
-    name: 'ability/melee/PowerAttack',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.power-attack',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
         name: 'character.primary-attribute.strength',
@@ -653,11 +541,11 @@ export const characterAbilities: Array<
     cost: 100,
   },
   {
-    name: 'ability/melee/Resisting',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.Resisting',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 15,
@@ -665,7 +553,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 12,
@@ -673,7 +561,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/ImprovedParrying',
+        name: 'character.ability.ImprovedParrying',
         type: '',
         input: '',
         level: 0,
@@ -688,11 +576,11 @@ export const characterAbilities: Array<
     cost: 200,
   },
   {
-    name: 'ability/melee/StunningStrike',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.StunningStrike',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 12,
@@ -700,7 +588,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/PowerAttack',
+        name: 'character.ability.power-attack',
         type: '',
         input: '',
         level: 0,
@@ -715,11 +603,11 @@ export const characterAbilities: Array<
     cost: 100,
   },
   {
-    name: 'ability/melee/TwohandedMelee',
-    category: 'character.ability-category.melee',
+    name: 'character.ability.TwohandedMelee',
+    category: 'character.ability-category.melee-combat',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 15,
@@ -735,7 +623,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'ability/melee/aimed-strike',
+        name: 'character.ability.aimed-strike',
         type: '',
         input: '',
         level: 0,
@@ -829,7 +717,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 13,
@@ -837,7 +725,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 13,
@@ -862,7 +750,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/dx',
+        name: 'character.primary-attribute.dexterity',
         type: '',
         input: '',
         level: 13,
@@ -881,7 +769,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/dx',
+        name: 'character.primary-attribute.dexterity',
         type: '',
         input: '',
         level: 14,
@@ -908,7 +796,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/dx',
+        name: 'character.primary-attribute.dexterity',
         type: '',
         input: '',
         level: 15,
@@ -935,7 +823,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 13,
@@ -943,7 +831,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 13,
@@ -969,7 +857,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.ranged',
     dependencies: [
       {
-        name: 'pri-a/ag',
+        name: 'character.primary-attribute.agility',
         type: '',
         input: '',
         level: 15,
@@ -977,7 +865,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/dx',
+        name: 'character.primary-attribute.dexterity',
         type: '',
         input: '',
         level: 12,
@@ -1002,7 +890,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 12,
@@ -1044,7 +932,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 12,
@@ -1078,7 +966,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 13,
@@ -1086,7 +974,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 12,
@@ -1120,7 +1008,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 13,
@@ -1161,7 +1049,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 14,
@@ -1187,7 +1075,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 14,
@@ -1287,7 +1175,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 12,
@@ -1295,7 +1183,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 12,
@@ -1329,7 +1217,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 15,
@@ -1363,7 +1251,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 15,
@@ -1390,7 +1278,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 12,
@@ -1398,7 +1286,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 12,
@@ -1423,7 +1311,7 @@ export const characterAbilities: Array<
     category: 'character.ability-category.vehicles',
     dependencies: [
       {
-        name: 'pri-a/cr',
+        name: 'character.primary-attribute.courage',
         type: '',
         input: '',
         level: 12,
@@ -1431,7 +1319,7 @@ export const characterAbilities: Array<
         oldLevel: 0,
       },
       {
-        name: 'pri-a/in',
+        name: 'character.primary-attribute.intuition',
         type: '',
         input: '',
         level: 12,
