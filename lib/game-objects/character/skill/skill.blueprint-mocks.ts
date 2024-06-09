@@ -41,7 +41,7 @@ export const characterSkillMocks: Record<Keys, Blueprint<CharacterSkill, 'min' |
     isCoreSkill: false,
     dependencies: [
       {
-        name: 'character.skill.chemistry',
+        dependencyName: 'character.skill.chemistry',
         key: 'current',
         value: 3,
       },
