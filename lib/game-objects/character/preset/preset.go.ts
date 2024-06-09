@@ -1,4 +1,4 @@
-import { GameObject } from '@satellite-games/orbit';
+import { GameObject, type GameObjectName } from '@satellite-games/orbit';
 import type { CharacterPresetName } from './preset.registry';
 
 /**
@@ -6,7 +6,7 @@ import type { CharacterPresetName } from './preset.registry';
  * impact the character's creation process.
  */
 export class CharacterPreset extends GameObject {
-  declare name: CharacterPresetName;
+  declare name: GameObjectName;
   /**
    * The number of attribute points that the character will have. Attribute points can be spent
    * to increase the character's attributes.
@@ -49,4 +49,10 @@ export class CharacterPreset extends GameObject {
    * influence the outcome of events in the game.
    */
   declare startFatePoints: number;
+}
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    'character.preset': RegistryEntry<CharacterPreset, CharacterPresetName>;
+  }
 }

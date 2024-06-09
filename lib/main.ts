@@ -14,9 +14,6 @@ export * from './events';
 // Character
 export * from './character';
 
-// Registry
-export * from './registry';
-
 // Game objects
 export * from './game-objects/character/preset';
 export * from './game-objects/character/primary-attribute';

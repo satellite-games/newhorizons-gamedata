@@ -1,51 +1,17 @@
-import type { Blueprint } from '@satellite-games/orbit';
-import { Character } from '@/character';
-import { characterOrigins, type CharacterOrigin, type CharacterOriginName } from './game-objects/character/origin';
-import { characterPresets, type CharacterPreset, type CharacterPresetName } from './game-objects/character/preset';
-import {
-  primaryAttributes,
-  type PrimaryAttribute,
-  type CharacterPrimaryAttributeName,
-} from './game-objects/character/primary-attribute';
-import {
-  secondaryAttributes,
-  type SecondaryAttribute,
-  type CharacterSecondaryAttributeName,
-} from './game-objects/character/secondary-attribute';
-import { characterSkills, type CharacterSkill, type CharacterSkillName } from './game-objects/character/skill';
-import {
-  characterSkillSpecializations,
-  type CharacterSkillSpecialization,
-  type CharacterSkillSpecializationName,
-} from './game-objects/character/skill-specialization';
-import { characterAbilities, type CharacterAbility, type CharacterAbilityName } from './game-objects/character/ability';
-
-export interface GameObjectRegistry {
-  character: Character;
-  'character.origin': CharacterOrigin;
-  'character.preset': CharacterPreset;
-  'character.primary-attribute': PrimaryAttribute;
-  'character.secondary-attribute': SecondaryAttribute;
-  'character.skill': CharacterSkill;
-  'character.skill-specialization': CharacterSkillSpecialization;
-  'character.ability': CharacterAbility;
-}
-export type GameObjectTypeName = keyof GameObjectRegistry;
-
-export type GameObjectName =
-  | CharacterOriginName
-  | CharacterPresetName
-  | CharacterPrimaryAttributeName
-  | CharacterSecondaryAttributeName
-  | CharacterSkillName
-  | CharacterSkillSpecializationName
-  | CharacterAbilityName;
+import type { Blueprint, GameObjectKey, Registry } from '@satellite-games/orbit';
+import { characterOrigins } from './game-objects/character/origin';
+import { characterPresets } from './game-objects/character/preset';
+import { primaryAttributes } from './game-objects/character/primary-attribute';
+import { secondaryAttributes, type SecondaryAttribute } from './game-objects/character/secondary-attribute';
+import { characterSkills, type CharacterSkill } from './game-objects/character/skill';
+import { characterSkillSpecializations } from './game-objects/character/skill-specialization';
+import { characterAbilities, type CharacterAbility } from './game-objects/character/ability';
 
 /**
  * The registry of all blueprint collections.
  */
 export const blueprints: {
-  [K in GameObjectTypeName]: Blueprint<GameObjectRegistry[K]>[];
+  [K in GameObjectKey]: Blueprint<Registry[K]['type']>[];
 } = {
   character: [],
   'character.origin': characterOrigins,

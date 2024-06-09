@@ -145,3 +145,9 @@ export class Character extends GameObject {
     return this.getChildren('character.skill').find((skill) => skill.name === name) as CharacterSkill | undefined;
   }
 }
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    character: RegistryEntry<Character, 'character'>;
+  }
+}

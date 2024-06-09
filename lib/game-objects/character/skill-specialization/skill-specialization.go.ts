@@ -17,3 +17,9 @@ export class CharacterSkillSpecialization extends GameObject {
    */
   declare details?: string;
 }
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    'character.skill-specialization': RegistryEntry<CharacterSkillSpecialization, CharacterSkillSpecializationName>;
+  }
+}

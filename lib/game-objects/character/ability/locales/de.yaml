@@ -1,0 +1,11 @@
+---
+character:
+  ability-category:
+    general: Allgemeine Sonderfertigkeit
+    melee-combat: Nahkampfsonderfertigkeit
+    ranged-combat: Fernkampfsonderfertigkeit
+  ability-usage-type:
+    passive: Passiv
+    uses-stamina: Verbraucht Ausdauer
+    uses-power: Verbraucht Energie
+  ability:

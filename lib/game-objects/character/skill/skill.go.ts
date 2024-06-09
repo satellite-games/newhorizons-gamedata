@@ -115,3 +115,9 @@ export class CharacterSkill extends GameObject {
     return { ...state, min: state.current };
   }
 }
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    'character.skill': RegistryEntry<CharacterSkill, CharacterSkillName>;
+  }
+}

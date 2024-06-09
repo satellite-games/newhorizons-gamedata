@@ -60,3 +60,9 @@ export class SecondaryAttribute extends GameObject {
     return primaryAttributes;
   }
 }
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    'character.secondary-attribute': RegistryEntry<SecondaryAttribute, CharacterSecondaryAttributeName>;
+  }
+}

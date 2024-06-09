@@ -45,3 +45,9 @@ export class PrimaryAttribute extends GameObject {
     return { ...state, min: state.current };
   }
 }
+
+declare module '@satellite-games/orbit' {
+  interface Registry {
+    'character.primary-attribute': RegistryEntry<PrimaryAttribute, CharacterPrimaryAttributeName>;
+  }
+}
