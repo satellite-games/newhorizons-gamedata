@@ -2,6 +2,7 @@ export const CharacterAbilityCategory = {
   general: 'character.ability-category.general',
   meleeCombat: 'character.ability-category.melee-combat',
   rangedCombat: 'character.ability-category.ranged-combat',
+  vehicles: 'character.ability-category.vehicles',
 } as const;
 export type CharacterAbilityCategory = (typeof CharacterAbilityCategory)[keyof typeof CharacterAbilityCategory];
 
