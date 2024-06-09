@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { characterOriginMocks } from './origin.blueprint-mocks';
 import { CharacterOrigin } from './origin.go';
 import { characterSkills, type CharacterSkillName } from '../skill';
+import { CharacterAbility } from '../ability';
 
 describe('apply', () => {
   let character: Character;
@@ -35,6 +36,8 @@ describe('apply', () => {
     expect(character.getSkill('character.skill.spaceships')).not.toBeDefined();
     expect(character.getSkill('character.skill.biology-and-medicine')).not.toBeDefined();
 
+    expect(character.getChildren<Character, CharacterAbility>('character.ability').length).toBe(0);
+
     // Apply the origin
     origin.apply(character, selectedSkillBonuses, 'Solaire');
 
@@ -54,5 +57,7 @@ describe('apply', () => {
     expect(character.getSkill('character.skill.soft-skills')?.current).toBe(-1);
     expect(character.getSkill('character.skill.spaceships')?.current).toBe(1);
     expect(character.getSkill('character.skill.biology-and-medicine')?.current).toBe(-1);
+
+    expect(character.getAbility('character.ability.language')?.details).toBe('Solaire');
   });
 });

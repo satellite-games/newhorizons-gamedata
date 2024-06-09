@@ -24,11 +24,11 @@ export class CharacterSkill extends GameObject {
   /**
    * The current level of the skill.
    */
-  current: number = 0;
+  declare current: number;
   /**
    * The minimum level of the skill.
    */
-  min: number = 0;
+  declare min: number;
   /**
    * The primary attributes that make up the skill check.
    */
@@ -45,6 +45,13 @@ export class CharacterSkill extends GameObject {
    * skill to be bought at a reduced factor and without the consent of the game master.
    */
   declare specialExperience?: number;
+
+  defaultValues(): Partial<CharacterSkill> {
+    return {
+      current: 0,
+      min: 0,
+    };
+  }
 
   /**
    * Returns the maximum level of the skill. The maximum level is determined by the highest

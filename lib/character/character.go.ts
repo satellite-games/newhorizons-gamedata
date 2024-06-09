@@ -12,6 +12,7 @@ import {
 import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } from './types';
 import { characterSkills, CharacterSkill, type CharacterSkillName } from '@/game-objects/character/skill';
 import { constants } from '@/constants';
+import type { CharacterAbility, CharacterAbilityName } from '@/game-objects/character/ability';
 
 export class Character extends GameObject {
   /**
@@ -47,7 +48,7 @@ export class Character extends GameObject {
     'character.secondary-attribute': SecondaryAttribute[];
     // 'character.trait': [];
     'character.skill': CharacterSkill[];
-    // 'character.abilities': [];
+    'character.ability': CharacterAbility[];
     // 'character.app': [];
     // 'character.equipment': [];
     // 'character.implant': [];
@@ -58,7 +59,7 @@ export class Character extends GameObject {
     'character.secondary-attribute': [],
     // 'character.trait': [],
     'character.skill': [],
-    // 'character.abilities': [],
+    'character.ability': [],
     // 'character.app': [],
     // 'character.equipment': [],
     // 'character.implant': [],
@@ -143,6 +144,16 @@ export class Character extends GameObject {
    */
   getSkill(name: CharacterSkillName): CharacterSkill | undefined {
     return this.getChildren('character.skill').find((skill) => skill.name === name) as CharacterSkill | undefined;
+  }
+
+  /**
+   * Returns an ability by its name. Returns `undefined` if the ability is not found.
+   * @param name The name of the ability.
+   */
+  getAbility(name: CharacterAbilityName): CharacterAbility | undefined {
+    return this.getChildren('character.ability').find((ability) => ability.name === name) as
+      | CharacterAbility
+      | undefined;
   }
 }
 

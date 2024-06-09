@@ -4,6 +4,7 @@ import type { CharacterOriginName } from './origin.registry';
 import type { Character } from '@/character';
 import { CharacterSkill, characterSkills, type CharacterSkillName } from '../skill';
 import { CharacterGameEvent } from '@/events';
+import { CharacterAbility, characterAbilities } from '../ability';
 
 /**
  * The character origin defines the cultural background of a character. It usually matches the
@@ -81,6 +82,17 @@ export class CharacterOrigin extends GameObject {
       skill.min += bonus;
       skill.changeValue(bonus);
     }
+
+    // Apply first language
+    const languageBlueprint = characterAbilities.find((ability) => ability.name === 'character.ability.language');
+    if (!languageBlueprint) {
+      throw new Error('Language ability not found.');
+    }
+    const language = new CharacterAbility({
+      ...languageBlueprint,
+      details: firstLanguage,
+    });
+    language.addToCharacter(character);
 
     new CharacterGameEvent({
       characterId: character.id,

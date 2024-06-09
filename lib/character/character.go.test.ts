@@ -4,6 +4,7 @@ import { Character } from '.';
 import { constants } from '@/constants';
 import { SecondaryAttribute, characterSkills, type PrimaryAttribute } from '@/main';
 import type { CharacterSkill } from '@/game-objects/character/skill';
+import { CharacterAbility, characterAbilities } from '@/game-objects/character/ability';
 
 describe('initialize', () => {
   it('should initialize with default name', async () => {
@@ -56,5 +57,23 @@ describe('getSkill', () => {
     const character = Character.initialize();
     const skill = character.getSkill('character.skill.unknown' as any);
     expect(skill).toBeUndefined();
+  });
+});
+
+describe('getAbility', () => {
+  it('should return ability by name', async () => {
+    const character = Character.initialize();
+    expect(character.getChildren('character.ability').length).toBe(0);
+    const abilityBlueprint = characterAbilities[0];
+    const ability = new CharacterAbility(abilityBlueprint);
+    ability.addToCharacter(character);
+    const ownedAbility = character.getAbility(ability.name);
+    expect(ownedAbility).toEqual(ability);
+  });
+
+  it('should return undefined if ability not found', async () => {
+    const character = Character.initialize();
+    const ability = character.getAbility('character.ability.combat-experience');
+    expect(ability).toBeUndefined();
   });
 });
