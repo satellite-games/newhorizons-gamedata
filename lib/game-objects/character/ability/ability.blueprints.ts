@@ -150,12 +150,12 @@ export const characterAbilities: Array<
     cost: 300,
     dependencies: [
       {
-        dependencyName: 'skill/knowledge/information-technology',
+        dependencyName: 'character.skill.information-technology',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill/crafting/programming',
+        dependencyName: 'character.skill.programming',
         key: 'current',
         value: 3,
       } as Dependency<CharacterSkill>,
@@ -216,7 +216,7 @@ export const characterAbilities: Array<
         value: 15,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill/knowledge/tactics-and-strategy',
+        dependencyName: 'character.skill.tactics-and-strategy',
         key: 'current',
         value: 3,
       } as Dependency<CharacterSkill>,
@@ -265,7 +265,7 @@ export const characterAbilities: Array<
     cost: 300,
     dependencies: [
       {
-        dependencyName: 'skill/knowledge/tactics-and-strategy',
+        dependencyName: 'character.skill.tactics-and-strategy',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
@@ -721,12 +721,12 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill.vehicles.spaceships',
+        dependencyName: 'character.skill.spaceships',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill.vehicles.airplanes',
+        dependencyName: 'character.skill.airplanes',
         key: 'current',
         value: 3,
       } as Dependency<CharacterSkill>,
@@ -745,12 +745,12 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill.vehicles.spaceships',
+        dependencyName: 'character.skill.spaceships',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill.vehicles.airplanes',
+        dependencyName: 'character.skill.airplanes',
         key: 'current',
         value: 3,
       } as Dependency<CharacterSkill>,
@@ -774,12 +774,12 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill.vehicles.spaceships',
+        dependencyName: 'character.skill.spaceships',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill.vehicles.airplanes',
+        dependencyName: 'character.skill.airplanes',
         key: 'current',
         value: 3,
       } as Dependency<CharacterSkill>,
@@ -802,12 +802,12 @@ export const characterAbilities: Array<
         value: 15,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill.vehicles.spaceships',
+        dependencyName: 'character.skill.spaceships',
         key: 'current',
         value: 10,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill.vehicles.airplanes',
+        dependencyName: 'character.skill.airplanes',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
@@ -857,7 +857,7 @@ export const characterAbilities: Array<
     cost: 100,
     dependencies: [
       {
-        dependencyName: 'skill/combat/onboard-weapons',
+        dependencyName: 'character.skill.onboard-weapons',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
@@ -872,7 +872,7 @@ export const characterAbilities: Array<
     cost: 200,
     dependencies: [
       {
-        dependencyName: 'skill/combat/onboard-weapons',
+        dependencyName: 'character.skill.onboard-weapons',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
@@ -890,7 +890,7 @@ export const characterAbilities: Array<
     cost: 400,
     dependencies: [
       {
-        dependencyName: 'skill/combat/onboard-weapons',
+        dependencyName: 'character.skill.onboard-weapons',
         key: 'current',
         value: 10,
       } as Dependency<CharacterSkill>,
@@ -917,12 +917,12 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill.vehicles.spaceships',
+        dependencyName: 'character.skill.spaceships',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
       {
-        dependencyName: 'skill.vehicles.airplanes',
+        dependencyName: 'character.skill.airplanes',
         key: 'current',
         value: 5,
       } as Dependency<CharacterSkill>,
@@ -985,7 +985,7 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill/vehicles/land-vehicles',
+        dependencyName: 'character.skill.land-vehicles',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
@@ -1008,7 +1008,7 @@ export const characterAbilities: Array<
         value: 12,
       } as Dependency<PrimaryAttribute>,
       {
-        dependencyName: 'skill/vehicles/water-vehicles',
+        dependencyName: 'character.skill.water-vehicles',
         key: 'current',
         value: 7,
       } as Dependency<CharacterSkill>,
