@@ -1,5 +1,5 @@
 import { Character } from '@/character';
-import type { CharacterPreset } from '@/main';
+import { CharacterPreset, type Blueprint } from '@/main';
 
 /**
  * The context for the character creation process. This context is used to store the character
@@ -7,12 +7,20 @@ import type { CharacterPreset } from '@/main';
  * context, you must provide a `CharacterPreset` that will be used through the process.
  */
 export class CharacterCreationContext {
-  preset: CharacterPreset;
-  character: Character;
+  private _preset: CharacterPreset;
+  private _character: Character;
 
-  constructor(preset: CharacterPreset) {
-    this.preset = preset;
-    this.character = Character.initialize();
+  constructor(preset: Blueprint<CharacterPreset>) {
+    this._preset = new CharacterPreset(preset);
+    this._character = Character.initialize();
+  }
+
+  get preset() {
+    return this._preset;
+  }
+
+  get character() {
+    return this._character;
   }
 
   get originSelected() {
