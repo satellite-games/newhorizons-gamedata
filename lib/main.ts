@@ -11,6 +11,9 @@ export * from './constants';
 // Events
 export * from './events';
 
+// Contexts
+export * from './contexts/character-creation';
+
 // Character
 export * from './character';
 

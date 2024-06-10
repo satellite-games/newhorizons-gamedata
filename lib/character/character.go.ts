@@ -13,6 +13,7 @@ import type { CharacterGeneralData, CharacterMetadata, CharacterProgressData } f
 import { characterSkills, CharacterSkill, type CharacterSkillName } from '@/game-objects/character/skill';
 import { constants } from '@/constants';
 import type { CharacterAbility, CharacterAbilityName } from '@/game-objects/character/ability';
+import { CharacterGameEvent } from '@/events';
 
 export class Character extends GameObject {
   /**
@@ -78,9 +79,6 @@ export class Character extends GameObject {
    * @returns The newly initialized character.
    */
   static initialize(name?: string) {
-    // TODO: Semantically this would better fit into the constructor. When character loading
-    // is implemented, we should check whether this method is still needed. Rather,
-    // a static method like `Character.load()` might be more appropriate.
     const character = new Character();
     // Set name
     character.general.name = name ?? constants.CHARACTER_DEFAULT_NAME;
@@ -97,7 +95,10 @@ export class Character extends GameObject {
     character.setChildren<Character, CharacterSkill>(
       coreSkills.map((blueprint) => new CharacterSkill({ ...blueprint, owner: character })),
     );
-
+    new CharacterGameEvent({
+      characterId: character.id,
+      message: `Character initialized.`,
+    });
     return character;
   }
 

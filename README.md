@@ -56,6 +56,10 @@ Besides `Game Object` there are also other primitives that make up the core part
 
 ### <a name='Contexts'></a>Contexts
 
+`Context`s are stateful objects that store specific runtime states and provide corresponding utility functionalities. The following contexts are available:
+
+- `CharacterCreationContext` is used to store a character that is in the process of being created and states related to that process. We recommend using this context when implementing a character creation process or UI.
+
 ## <a name='OtherFeatures'></a>Other Features
 
 ### <a name='Localization'></a>Localization

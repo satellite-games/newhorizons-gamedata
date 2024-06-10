@@ -3,3 +3,4 @@
 // they will not be included into the bundle.
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 export * from './game-objects/character/origin/origin.blueprint-mocks';
+export * from './game-objects/character/preset/preset.blueprint-mocks';
